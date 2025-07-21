@@ -45,13 +45,22 @@
     const menuToggle = document.getElementById("menu-toggle");
     const mobileMenu = document.getElementById("mobile-menu");
     if (!menuToggle || !mobileMenu) return;
+
+    // Set initial state (avoid shaking on load)
+    mobileMenu.classList.remove("open");
+    mobileMenu.style.maxHeight = "0";
+
     menuToggle.addEventListener("click", function () {
       const isOpen = mobileMenu.classList.toggle("open");
-      mobileMenu.style.maxHeight = isOpen
-        ? mobileMenu.scrollHeight + "px"
-        : "0";
+      // Only set maxHeight on open, let CSS handle close
+      if (isOpen) {
+        mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
+      } else {
+        mobileMenu.style.maxHeight = "0";
+      }
       menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
+
     // Close menu when link is clicked (mobile)
     mobileMenu.addEventListener("click", function (e) {
       if (e.target.tagName === "A") {

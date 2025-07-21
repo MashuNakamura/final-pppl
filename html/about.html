@@ -1,11 +1,428 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About | Digital Market</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/about-style.css" />
   </head>
-  <body>
-    <h1>Hello World</h1>
+  <body class="bg-[#f6f4ff] text-gray-800 font-sans">
+    <!-- Navbar Start -->
+    <nav
+      class="w-full bg-white/70 backdrop-blur-sm shadow fixed top-0 left-0 z-50"
+      aria-label="Main Navigation"
+    >
+      <div
+        class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center"
+      >
+        <a href="index.html" class="flex items-center gap-2" aria-label="Home">
+          <img
+            src="../favicon.svg"
+            alt="Digital Market Logo"
+            class="h-8 w-8"
+            loading="eager"
+          />
+          <span class="font-bold text-xl text-[#8e6fff]">Digital Market</span>
+        </a>
+        <div class="hidden md:flex gap-6">
+          <a
+            href="index.html"
+            class="hover:text-[#8e6fff] font-medium transition"
+            aria-label="Home"
+            >Home</a
+          >
+          <a
+            href="about.html"
+            class="hover:text-[#8e6fff] font-medium transition"
+            aria-label="About"
+            >About</a
+          >
+          <a
+            href="services.html"
+            class="hover:text-[#8e6fff] font-medium transition"
+            aria-label="Services"
+            >Services</a
+          >
+          <a
+            href="portfolio.html"
+            class="hover:text-[#8e6fff] font-medium transition"
+            aria-label="Portfolio"
+            >Portfolio</a
+          >
+          <a
+            href="contact.html"
+            class="hover:text-[#8e6fff] font-medium transition"
+            aria-label="Contact"
+            >Contact</a
+          >
+        </div>
+        <button
+          id="menu-toggle"
+          aria-label="Buka menu navigasi"
+          class="md:hidden flex items-center justify-center w-10 h-10 rounded focus:outline-none focus:ring-2 focus:ring-[#8e6fff]"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span class="sr-only">Toggle navigation</span>
+          <svg
+            class="h-7 w-7 text-[#8e6fff]"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4 7h16M4 12h16M4 17h16"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        id="mobile-menu"
+        class="md:hidden absolute bg-white/95 shadow-lg w-full left-0 top-full transition-all duration-300 ease-in-out max-h-0 overflow-hidden"
+        aria-label="Menu Navigasi Mobile"
+      >
+        <div class="flex flex-col items-center gap-4 py-4">
+          <a
+            href="index.html"
+            class="block py-2 px-6 rounded hover:bg-[#f3f0ff] font-medium transition"
+            aria-label="Home"
+            >Home</a
+          >
+          <a
+            href="about.html"
+            class="block py-2 px-6 rounded hover:bg-[#f3f0ff] font-medium transition"
+            aria-label="About"
+            >About</a
+          >
+          <a
+            href="services.html"
+            class="block py-2 px-6 rounded hover:bg-[#f3f0ff] font-medium transition"
+            aria-label="Services"
+            >Services</a
+          >
+          <a
+            href="portfolio.html"
+            class="block py-2 px-6 rounded hover:bg-[#f3f0ff] font-medium transition"
+            aria-label="Portfolio"
+            >Portfolio</a
+          >
+          <a
+            href="contact.html"
+            class="block py-2 px-6 rounded hover:bg-[#f3f0ff] font-medium transition"
+            aria-label="Contact"
+            >Contact</a
+          >
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <main class="main-content pt-20">
+      <!-- Timeline -->
+      <section id="timeline" class="section">
+        <h2 class="section-title">Cerita Perjalanan Kami</h2>
+        <div class="timeline">
+          <div class="timeline-item" data-anim>
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2019</div>
+            <div class="timeline-content">
+              <h3>Digital Market Berdiri</h3>
+              <p>
+                Dimulai dengan misi membantu UMKM Go Digital melalui strategi
+                pemasaran online yang terjangkau dan efisien.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item" data-anim>
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2020</div>
+            <div class="timeline-content">
+              <h3>Pertumbuhan Tim & Klien</h3>
+              <p>
+                Tim bertambah, layanan makin lengkap. Klien dari berbagai sektor
+                mulai mempercayakan digital marketing pada kami.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item" data-anim>
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2022</div>
+            <div class="timeline-content">
+              <h3>Inovasi & Penghargaan</h3>
+              <p>
+                Inovasi layanan (SEO, Ads, Creative) dan raih penghargaan "Best
+                Digital Partner" skala lokal.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item" data-anim>
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2024</div>
+            <div class="timeline-content">
+              <h3>Go Nasional</h3>
+              <p>
+                Ekspansi layanan ke seluruh Indonesia, memperkuat posisi sebagai
+                agency digital marketing terpercaya.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tim Kami -->
+      <section id="team" class="section section-alt">
+        <h2 class="section-title">Tim Kami</h2>
+        <div class="team-grid">
+          <!-- Card 1 -->
+          <div class="team-card team-hover">
+            <img
+              src="https://randomuser.me/api/portraits/men/44.jpg"
+              alt="Fajar Ramadhan - CEO"
+              class="team-avatar"
+            />
+            <div class="team-name">Fajar Ramadhan</div>
+            <div class="team-role">CEO & Founder</div>
+            <div class="team-bio team-bio-hover">
+              Visioner di dunia digital marketing yang telah membawa puluhan
+              UMKM naik kelas melalui transformasi digital. Berpengalaman lebih
+              dari 7 tahun, Fajar memimpin tim dengan inovasi dan fokus pada
+              hasil nyata bagi klien.
+            </div>
+            <div class="team-socials team-socials-hover">
+              <a href="#" aria-label="LinkedIn Fajar">🔗</a>
+              <a href="#" aria-label="Instagram Fajar">📸</a>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="team-card team-hover">
+            <img
+              src="https://randomuser.me/api/portraits/women/47.jpg"
+              alt="Nadia Salsabila - Creative Lead"
+              class="team-avatar"
+            />
+            <div class="team-name">Nadia Salsabila</div>
+            <div class="team-role">Creative Lead</div>
+            <div class="team-bio team-bio-hover">
+              Spesialis konten visual dan strategi kreatif. Nadia telah
+              mengembangkan lebih dari 100 campaign viral serta menjadi mentor
+              pengembangan identitas brand digital untuk perusahaan dan UMKM.
+            </div>
+            <div class="team-socials team-socials-hover">
+              <a href="#" aria-label="LinkedIn Nadia">🔗</a>
+              <a href="#" aria-label="Instagram Nadia">📸</a>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="team-card team-hover">
+            <img
+              src="https://randomuser.me/api/portraits/men/21.jpg"
+              alt="Bimo Pradipta - SEO Specialist"
+              class="team-avatar"
+            />
+            <div class="team-name">Bimo Pradipta</div>
+            <div class="team-role">SEO Specialist</div>
+            <div class="team-bio team-bio-hover">
+              Ahli SEO dan SEM yang telah membawa website klien menduduki
+              peringkat utama di Google. Bimo menguasai riset kata kunci,
+              optimasi teknis, dan strategi iklan digital berbasis data.
+            </div>
+            <div class="team-socials team-socials-hover">
+              <a href="#" aria-label="LinkedIn Bimo">🔗</a>
+              <a href="#" aria-label="Instagram Bimo">📸</a>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="team-card team-hover">
+            <img
+              src="https://randomuser.me/api/portraits/women/68.jpg"
+              alt="Ayu Maharani - Social Media Manager"
+              class="team-avatar"
+            />
+            <div class="team-name">Ayu Maharani</div>
+            <div class="team-role">Social Media Manager</div>
+            <div class="team-bio team-bio-hover">
+              Berpengalaman mengelola lebih dari 30 akun brand dengan
+              pertumbuhan engagement konsisten. Ayu fokus pada strategi
+              komunikasi, interaksi audiens, dan pengembangan konten yang
+              relevan dengan tren digital.
+            </div>
+            <div class="team-socials team-socials-hover">
+              <a href="#" aria-label="LinkedIn Ayu">🔗</a>
+              <a href="#" aria-label="Instagram Ayu">📸</a>
+            </div>
+          </div>
+          <!-- Card 5 -->
+          <div class="team-card team-hover">
+            <img
+              src="https://randomuser.me/api/portraits/men/50.jpg"
+              alt="Rizky Maulana - Web Developer"
+              class="team-avatar"
+            />
+            <div class="team-name">Rizky Maulana</div>
+            <div class="team-role">Web Developer</div>
+            <div class="team-bio team-bio-hover">
+              Developer fullstack dengan keahlian UI/UX dan automasi digital
+              marketing. Rizky telah membangun berbagai platform website serta
+              sistem pendukung kampanye online untuk klien dari berbagai sektor.
+            </div>
+            <div class="team-socials team-socials-hover">
+              <a href="#" aria-label="LinkedIn Rizky">🔗</a>
+              <a href="#" aria-label="Instagram Rizky">📸</a>
+            </div>
+          </div>
+          <!-- Card 6 -->
+          <div class="team-card team-hover">
+            <img
+              src="https://randomuser.me/api/portraits/women/65.jpg"
+              alt="Mega Putri - Digital Ads Specialist"
+              class="team-avatar"
+            />
+            <div class="team-name">Mega Putri</div>
+            <div class="team-role">Digital Ads Specialist</div>
+            <div class="team-bio team-bio-hover">
+              Spesialis digital advertising dengan keahlian di Facebook & Google
+              Ads. Mega sukses membawa berbagai kampanye klien mencapai ROI
+              tinggi melalui strategi targeting dan optimasi performa iklan.
+            </div>
+            <div class="team-socials team-socials-hover">
+              <a href="#" aria-label="LinkedIn Mega">🔗</a>
+              <a href="#" aria-label="Instagram Mega">📸</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Statistik -->
+      <section id="stats" class="section">
+        <h2 class="section-title">Statistik Kami</h2>
+        <div class="stat-grid">
+          <div class="stat-item">
+            <div class="stat-number"><span id="stat-client"></span></div>
+            <div class="stat-label">Klien</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number"><span id="stat-project"></span></div>
+            <div class="stat-label">Proyek Selesai</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number"><span id="stat-growth"></span></div>
+            <div class="stat-label">Pertumbuhan (%)</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number"><span id="stat-award"></span></div>
+            <div class="stat-label">Penghargaan</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Nilai-Nilai -->
+      <section id="values" class="section section-alt">
+        <h2 class="section-title">Nilai-Nilai Kami</h2>
+        <div class="values-grid values-grid-3x2">
+          <div class="value-card" tabindex="0">
+            <div class="value-icon">🤝</div>
+            <div class="value-title">Kolaborasi</div>
+            <div class="value-desc">
+              Kerja tim, komunikasi terbuka, dan saling mendukung menjadi
+              fondasi utama kami.
+            </div>
+          </div>
+          <div class="value-card" tabindex="0">
+            <div class="value-icon">🚀</div>
+            <div class="value-title">Inovasi</div>
+            <div class="value-desc">
+              Selalu mencari terobosan kreatif untuk hasil yang lebih efektif
+              dan efisien.
+            </div>
+          </div>
+          <div class="value-card" tabindex="0">
+            <div class="value-icon">💡</div>
+            <div class="value-title">Komitmen</div>
+            <div class="value-desc">
+              Dedikasi penuh untuk solusi terbaik dan layanan prima bagi klien.
+            </div>
+          </div>
+          <div class="value-card" tabindex="0">
+            <div class="value-icon">🌱</div>
+            <div class="value-title">Tumbuh Bersama</div>
+            <div class="value-desc">
+              Membangun pertumbuhan berkelanjutan bersama klien, tim, dan
+              komunitas.
+            </div>
+          </div>
+          <div class="value-card" tabindex="0">
+            <div class="value-icon">🔎</div>
+            <div class="value-title">Transparansi</div>
+            <div class="value-desc">
+              Setiap proses & hasil selalu bisa diakses klien secara jelas dan
+              terbuka.
+            </div>
+          </div>
+          <div class="value-card" tabindex="0">
+            <div class="value-icon">🎯</div>
+            <div class="value-title">Hasil Nyata</div>
+            <div class="value-desc">
+              Fokus pada pencapaian objektif sesuai kebutuhan bisnis klien.
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Start -->
+    <footer
+      class="bg-white/80 border-t border-[#ececff] mt-10"
+      aria-label="Footer"
+    >
+      <div
+        class="max-w-6xl mx-auto px-4 py-8 flex flex-col md:flex-row justify-between items-center gap-4"
+      >
+        <div class="flex items-center gap-2">
+          <img
+            src="../favicon.svg"
+            alt="Digital Market Logo"
+            class="h-7 w-7"
+            loading="eager"
+          />
+          <span class="font-semibold text-[#8e6fff]">Digital Market</span>
+        </div>
+        <div class="text-gray-500 text-sm">
+          &copy; 2025 Digital Market. All rights reserved.
+        </div>
+        <div class="flex gap-4 text-[#8e6fff]">
+          <a
+            href="https://www.instagram.com/himaifukdc/"
+            target="_blank"
+            aria-label="Instagram"
+            class="hover:opacity-70"
+          >
+            <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm4.25 3.25a5.25 5.25 0 1 1 0 10.5 5.25 5.25 0 0 1 0-10.5zm0 1.5a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5zm5.25 1a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"
+              />
+            </svg>
+          </a>
+          <a
+            href="mailto:hima.informatika@ukdc.ac.id"
+            aria-label="Email"
+            class="hover:opacity-70"
+          >
+            <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M2.01 4.93A2.005 2.005 0 0 1 3.99 4h16.02c.89 0 1.65.58 1.9 1.42l-9.91 7.1-9.9-7.1zm-.01 2.54v11.58C2 20.1 3.87 22 6.01 22h11.98c2.15 0 4.01-1.9 4.01-4.05V7.47l-8.99 6.45a1.003 1.003 0 0 1-1.18 0L2 7.47z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer End -->
+    <script src="../js/about-script.js"></script>
   </body>
 </html>
