@@ -4,15 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Digital Marketing Agency | Digital Market</title>
-    <meta
-      name="description"
-      content="Digital Marketing Agency: strategi digital kreatif, terukur, dan ramah untuk pertumbuhan bisnis Anda."
-    />
-    <meta
-      name="keywords"
-      content="digital marketing, agency, strategi digital, iklan, bisnis, kreatif, konsultasi"
-    />
-    <meta name="author" content="Digital Market" />
     <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
     <link rel="stylesheet" href="../css/style.css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -36,7 +27,6 @@
           />
           <span class="font-bold text-xl text-[#8e6fff]">Digital Market</span>
         </a>
-        <!-- Desktop Menu -->
         <div class="hidden md:flex gap-6">
           <a
             href="index.html"
@@ -69,7 +59,6 @@
             >Contact</a
           >
         </div>
-        <!-- Hamburger Button -->
         <button
           id="menu-toggle"
           aria-label="Buka menu navigasi"
@@ -94,7 +83,6 @@
           </svg>
         </button>
       </div>
-      <!-- Mobile Menu -->
       <div
         id="mobile-menu"
         class="md:hidden absolute bg-white/95 shadow-lg w-full left-0 top-full transition-all duration-300 ease-in-out max-h-0 overflow-hidden"
@@ -137,152 +125,303 @@
     <!-- Navbar End -->
 
     <main class="min-h-screen flex flex-col pt-20" id="main-content">
-      <!-- HERO SECTION Start -->
+      <!-- HERO SECTION -->
       <section
-        class="hero-soft relative min-h-screen flex flex-col justify-center items-center overflow-hidden"
         id="hero"
+        class="relative min-h-screen flex flex-col justify-center items-center overflow-hidden"
       >
-        <!-- Animated Pastel Gradient Background -->
-        <div class="absolute inset-0 z-0 animated-gradient"></div>
-        <!-- Floating Soft Shapes (Animated + Parallax) -->
-        <svg
-          class="parallax-shape shape1"
-          width="180"
-          height="180"
-          viewBox="0 0 180 180"
-          fill="none"
-          aria-hidden="true"
-        >
-          <ellipse
-            cx="90"
-            cy="90"
-            rx="90"
-            ry="60"
-            fill="#B2B7FF"
-            fill-opacity="0.16"
-          />
-        </svg>
-        <svg
-          class="parallax-shape shape2"
-          width="120"
-          height="120"
-          viewBox="0 0 120 120"
-          fill="none"
-          aria-hidden="true"
-        >
-          <circle cx="60" cy="60" r="60" fill="#FFB6D9" fill-opacity="0.18" />
-        </svg>
-        <svg
-          class="parallax-shape shape3"
-          width="140"
-          height="140"
-          viewBox="0 0 140 140"
-          fill="none"
-          aria-hidden="true"
-        >
-          <ellipse
-            cx="70"
-            cy="70"
-            rx="50"
-            ry="70"
-            fill="#A4F1F4"
-            fill-opacity="0.16"
-          />
-        </svg>
+        <!-- Animated Shapes -->
+        <div class="absolute inset-0 z-0 pointer-events-none">
+          <div class="hero-shape hero-shape1 absolute"></div>
+          <div class="hero-shape hero-shape2 absolute"></div>
+          <div class="hero-shape hero-shape3 absolute"></div>
+        </div>
         <div
-          class="relative z-10 text-center max-w-3xl mx-auto px-4 pt-32 pb-20"
+          class="relative z-10 text-center max-w-2xl mx-auto px-4 pt-20 pb-10"
         >
-          <h1
-            class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#4e4e61] mb-6 flex flex-col items-center gap-2 drop-shadow"
-          >
-            <span class="block">Digital Marketing Agency</span>
-            <span
-              class="text-[#8e6fff] font-bold text-2xl md:text-3xl mt-2 bg-white/40 px-4 py-1 rounded-xl shadow-lg"
-            >
-              <span id="typing"></span>
-            </span>
+          <h1 class="text-4xl md:text-5xl font-bold mb-6 md:mb-3">
+            <h1 class="text-4xl md:text-5xl font-bold mb-2 text-center">
+              Strategi Digital yang
+            </h1>
+            <div
+              class="gradient-typing text-lg md:text-xl font-bold mb-8 text-center"
+              id="typing"
+            ></div>
           </h1>
-          <p class="text-xl text-[#5d5e73] mb-10 drop-shadow">
-            Solusi digital kreatif, terukur, dan ramah untuk pertumbuhan
-            bisnismu.
+          <p class="text-lg text-gray-700 mb-8">
+            Solusi pemasaran digital untuk UMKM & perusahaan modern. Optimalkan
+            jangkauan & hasil bisnis Anda bersama kami!
           </p>
-          <a
-            href="#stats"
-            class="inline-block px-10 py-4 bg-[#8e6fff] text-white font-semibold rounded-full shadow-xl hover:bg-[#b5b8ff] hover:text-[#4e4e61] transition focus:outline-none text-lg smooth-scroll ring-2 ring-[#e6eaff] ring-offset-2"
-            aria-label="Konsultasi Gratis, scroll ke statistik"
+          <a href="#services" class="cta-btn smooth-scroll"
+            >Lihat Layanan Kami</a
           >
-            Konsultasi Gratis
-          </a>
-        </div>
-        <div class="relative z-10 flex justify-center">
+          <!-- Down Arrow -->
           <a
-            href="#stats"
-            class="smooth-scroll"
-            aria-label="Scroll ke statistik"
+            href="#services"
+            class="down-arrow smooth-scroll flex flex-col items-center mt-10"
+            aria-label="Scroll ke Layanan"
           >
-            <svg
-              class="mx-auto mt-12 animate-bounce w-8 h-8 text-[#8e6fff] opacity-80"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path d="M19 9l-7 7-7-7" />
-            </svg>
+            <span class="animate-bounce text-[#8e6fff] text-3xl">&#x25BC;</span>
           </a>
-        </div>
-      </section>
-      <!-- HERO SECTION End -->
-
-      <!-- STATISTICS COUNTER SECTION Start -->
-      <section
-        id="stats"
-        class="relative bg-white py-20 shadow-inner"
-        aria-label="Statistik Digital Market"
-      >
-        <div class="max-w-5xl mx-auto px-4">
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-            <div>
-              <div
-                class="text-5xl font-extrabold text-[#8e6fff] drop-shadow-sm"
-                id="users-count"
-                aria-live="polite"
+          <div class="flex flex-wrap justify-center gap-6 mt-10">
+            <div class="flex flex-col items-center">
+              <span id="users-count" class="text-3xl font-bold text-[#8e6fff]"
+                >0+</span
               >
-                0
-              </div>
-              <div class="mt-2 text-lg font-medium text-gray-700">
-                Pengguna Puas
-              </div>
+              <span class="text-gray-600 mt-1">Pengguna</span>
             </div>
-            <div>
-              <div
-                class="text-5xl font-extrabold text-[#78d6d8] drop-shadow-sm"
+            <div class="flex flex-col items-center">
+              <span
                 id="projects-count"
-                aria-live="polite"
+                class="text-3xl font-bold text-[#8e6fff]"
+                >0+</span
               >
-                0
-              </div>
-              <div class="mt-2 text-lg font-medium text-gray-700">
-                Proyek Selesai
-              </div>
+              <span class="text-gray-600 mt-1">Proyek Selesai</span>
             </div>
-            <div>
-              <div
-                class="text-5xl font-extrabold text-[#FFB6D9] drop-shadow-sm"
-                id="success-count"
-                aria-live="polite"
+            <div class="flex flex-col items-center">
+              <span id="success-count" class="text-3xl font-bold text-[#8e6fff]"
+                >0%</span
               >
-                0
-              </div>
-              <div class="mt-2 text-lg font-medium text-gray-700">
-                Tingkat Keberhasilan (%)
-              </div>
+              <span class="text-gray-600 mt-1">Tingkat Keberhasilan</span>
             </div>
           </div>
         </div>
       </section>
-      <!-- STATISTICS COUNTER SECTION End -->
+      <!-- HERO SECTION END -->
+
+      <!-- FEATURES/SERVICES SECTION -->
+      <!-- FEATURES/SERVICES SECTION -->
+      <section id="services" class="py-24 bg-[#f6f4ff]">
+        <h2 class="text-3xl font-bold mb-12 text-center">Layanan Kami</h2>
+        <div
+          class="grid gap-7 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto px-4"
+        >
+          <!-- Card 1 -->
+          <div
+            class="service-card group transition-all duration-200 ease-in-out bg-white rounded-xl shadow-lg p-7 border border-[#ececff] hover:-translate-y-2 hover:shadow-2xl flex flex-col items-center min-h-[340px]"
+          >
+            <div
+              class="service-icon mb-3 text-4xl text-[#8e6fff] animate-bounce"
+            >
+              📈
+            </div>
+            <h3 class="font-semibold text-xl mb-2 text-center text-[#3d347d]">
+              Strategi Pemasaran Digital
+            </h3>
+            <p class="text-gray-600 text-center mb-4">
+              Tingkatkan visibilitas & konversi bisnis Anda dengan strategi
+              digital yang terukur dan optimal.
+            </p>
+            <button
+              class="service-more bg-[#8e6fff] text-white rounded-full px-5 py-2 font-medium text-sm hover:bg-[#7d69e8] transition mb-2"
+              aria-expanded="false"
+            >
+              Lihat Detail
+            </button>
+            <div
+              class="service-detail w-full px-2 py-3 bg-[#f8f7ff] rounded-lg shadow"
+            >
+              <ul class="text-[#514a7f] text-sm list-disc ml-4">
+                <li>Analisis kompetitor dan peluang pasar</li>
+                <li>Penentuan target audiens yang spesifik</li>
+                <li>Rencana kampanye digital terintegrasi</li>
+                <li>Penjadwalan dan pelaporan progres strategi</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div
+            class="service-card group transition-all duration-200 ease-in-out bg-white rounded-xl shadow-lg p-7 border border-[#ececff] hover:-translate-y-2 hover:shadow-2xl flex flex-col items-center min-h-[340px]"
+          >
+            <div
+              class="service-icon mb-3 text-4xl text-[#8e6fff] animate-bounce"
+            >
+              🤳
+            </div>
+            <h3 class="font-semibold text-xl mb-2 text-center text-[#3d347d]">
+              Manajemen Media Sosial
+            </h3>
+            <p class="text-gray-600 text-center mb-4">
+              Kelola sosial media bisnis Anda secara profesional dengan konten
+              kreatif dan engagement tinggi.
+            </p>
+            <button
+              class="service-more bg-[#8e6fff] text-white rounded-full px-5 py-2 font-medium text-sm hover:bg-[#7d69e8] transition mb-2"
+              aria-expanded="false"
+            >
+              Lihat Detail
+            </button>
+            <div
+              class="service-detail w-full px-2 py-3 bg-[#f8f7ff] rounded-lg shadow"
+            >
+              <ul class="text-[#514a7f] text-sm list-disc ml-4">
+                <li>
+                  Pembuatan konten harian & bulanan (foto, video, caption)
+                </li>
+                <li>Jadwal posting otomatis & interaksi follower</li>
+                <li>Pemantauan insight & pertumbuhan akun</li>
+                <li>Laporan performa bulanan</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div
+            class="service-card group transition-all duration-200 ease-in-out bg-white rounded-xl shadow-lg p-7 border border-[#ececff] hover:-translate-y-2 hover:shadow-2xl flex flex-col items-center min-h-[340px]"
+          >
+            <div
+              class="service-icon mb-3 text-4xl text-[#8e6fff] animate-bounce"
+            >
+              🔍
+            </div>
+            <h3 class="font-semibold text-xl mb-2 text-center text-[#3d347d]">
+              Optimasi SEO
+            </h3>
+            <p class="text-gray-600 text-center mb-4">
+              Website Anda semakin mudah ditemukan di Google, traffic organik
+              meningkat.
+            </p>
+            <button
+              class="service-more bg-[#8e6fff] text-white rounded-full px-5 py-2 font-medium text-sm hover:bg-[#7d69e8] transition mb-2"
+              aria-expanded="false"
+            >
+              Lihat Detail
+            </button>
+            <div
+              class="service-detail w-full px-2 py-3 bg-[#f8f7ff] rounded-lg shadow"
+            >
+              <ul class="text-[#514a7f] text-sm list-disc ml-4">
+                <li>Audit SEO menyeluruh website</li>
+                <li>Riset & implementasi kata kunci potensial</li>
+                <li>Optimasi teknis, on-page, dan off-page</li>
+                <li>Pembuatan artikel & backlink berkualitas</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div
+            class="service-card group transition-all duration-200 ease-in-out bg-white rounded-xl shadow-lg p-7 border border-[#ececff] hover:-translate-y-2 hover:shadow-2xl flex flex-col items-center min-h-[340px]"
+          >
+            <div
+              class="service-icon mb-3 text-4xl text-[#8e6fff] animate-bounce"
+            >
+              💡
+            </div>
+            <h3 class="font-semibold text-xl mb-2 text-center text-[#3d347d]">
+              Pengembangan Konten Kreatif
+            </h3>
+            <p class="text-gray-600 text-center mb-4">
+              Konten visual & copywriting menarik untuk semua platform digital
+              Anda.
+            </p>
+            <button
+              class="service-more bg-[#8e6fff] text-white rounded-full px-5 py-2 font-medium text-sm hover:bg-[#7d69e8] transition mb-2"
+              aria-expanded="false"
+            >
+              Lihat Detail
+            </button>
+            <div
+              class="service-detail w-full px-2 py-3 bg-[#f8f7ff] rounded-lg shadow"
+            >
+              <ul class="text-[#514a7f] text-sm list-disc ml-4">
+                <li>Desain grafis promosi, feeds, dan story</li>
+                <li>Pembuatan video pendek & animasi</li>
+                <li>Copywriting & storytelling brand</li>
+                <li>Ide campaign konten tematik</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Card 5 -->
+          <div
+            class="service-card group transition-all duration-200 ease-in-out bg-white rounded-xl shadow-lg p-7 border border-[#ececff] hover:-translate-y-2 hover:shadow-2xl flex flex-col items-center min-h-[340px]"
+          >
+            <div
+              class="service-icon mb-3 text-4xl text-[#8e6fff] animate-bounce"
+            >
+              💸
+            </div>
+            <h3 class="font-semibold text-xl mb-2 text-center text-[#3d347d]">
+              Iklan Berbayar (PPC)
+            </h3>
+            <p class="text-gray-600 text-center mb-4">
+              Hemat biaya, jangkauan lebih luas dengan iklan digital yang
+              terukur hasilnya.
+            </p>
+            <button
+              class="service-more bg-[#8e6fff] text-white rounded-full px-5 py-2 font-medium text-sm hover:bg-[#7d69e8] transition mb-2"
+              aria-expanded="false"
+            >
+              Lihat Detail
+            </button>
+            <div
+              class="service-detail w-full px-2 py-3 bg-[#f8f7ff] rounded-lg shadow"
+            >
+              <ul class="text-[#514a7f] text-sm list-disc ml-4">
+                <li>Set up & optimasi Google Ads, Facebook/Instagram Ads</li>
+                <li>Targeting audiens spesifik sesuai kebutuhan</li>
+                <li>Monitoring & analisis performa iklan</li>
+                <li>Laporan ROI dan rekomendasi budget</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Card 6 -->
+          <div
+            class="service-card group transition-all duration-200 ease-in-out bg-white rounded-xl shadow-lg p-7 border border-[#ececff] hover:-translate-y-2 hover:shadow-2xl flex flex-col items-center min-h-[340px]"
+          >
+            <div
+              class="service-icon mb-3 text-4xl text-[#8e6fff] animate-bounce"
+            >
+              🧠
+            </div>
+            <h3 class="font-semibold text-xl mb-2 text-center text-[#3d347d]">
+              Konsultasi Digital
+            </h3>
+            <p class="text-gray-600 text-center mb-4">
+              Butuh solusi digital lain? Tim kami siap konsultasi untuk strategi
+              bisnis Anda.
+            </p>
+            <button
+              class="service-more bg-[#8e6fff] text-white rounded-full px-5 py-2 font-medium text-sm hover:bg-[#7d69e8] transition mb-2"
+              aria-expanded="false"
+            >
+              Lihat Detail
+            </button>
+            <div
+              class="service-detail w-full px-2 py-3 bg-[#f8f7ff] rounded-lg shadow"
+            >
+              <ul class="text-[#514a7f] text-sm list-disc ml-4">
+                <li>Pemetaan kebutuhan digital bisnis Anda</li>
+                <li>Diskusi dan brainstorming solusi digital</li>
+                <li>Pendampingan implementasi strategi</li>
+                <li>Training & support sesuai challenge bisnis Anda</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- FEATURES/SERVICES SECTION END -->
+
+      <!-- TESTIMONIALS/REVIEWS SECTION -->
+      <section id="testimonials" class="py-24 bg-white">
+        <h2 class="text-3xl font-bold mb-12 text-center">Testimoni Klien</h2>
+        <div
+          class="testimonial-carousel max-w-xl mx-auto relative min-h-[230px]"
+        ></div>
+        <div class="testimonial-controls flex justify-center mt-6 gap-6">
+          <button
+            class="testimonial-prev bg-[#8e6fff] text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-[#7d69e8] transition"
+            aria-label="Sebelumnya"
+          >
+            &lt;
+          </button>
+          <button
+            class="testimonial-next bg-[#8e6fff] text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-[#7d69e8] transition"
+            aria-label="Berikutnya"
+          >
+            &gt;
+          </button>
+        </div>
+      </section>
+      <!-- TESTIMONIALS/REVIEWS SECTION END -->
     </main>
 
     <!-- Footer Start -->
@@ -306,7 +445,6 @@
           &copy; 2025 Digital Market. All rights reserved.
         </div>
         <div class="flex gap-4 text-[#8e6fff]">
-          <!-- Instagram icon -->
           <a
             href="https://www.instagram.com/himaifukdc/"
             target="_blank"
@@ -319,7 +457,6 @@
               />
             </svg>
           </a>
-          <!-- Email icon -->
           <a
             href="mailto:hima.informatika@ukdc.ac.id"
             aria-label="Email"

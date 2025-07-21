@@ -1,6 +1,5 @@
-// Encapsulate all logic to avoid polluting global namespace
 (function () {
-  // Singleton Pattern for Typing Effect
+  // === Dynamic Typing Effect for Headline ===
   const TypingEffect = (function () {
     let instance;
     function init(words, mainStatic = "") {
@@ -11,7 +10,6 @@
         const typing = document.getElementById("typing");
         if (!typing) return;
         const currentWord = words[i];
-        // Gabungkan kata utama dan typing effect
         typing.textContent = mainStatic + currentWord.substring(0, j);
         if (isDeleting) {
           j--;
@@ -42,25 +40,29 @@
     };
   })();
 
-  // Modular Hamburger Menu with Event Delegation
+  // === Hamburger (Mobile) Menu Toggle ===
   function setupHamburgerMenu() {
     const menuToggle = document.getElementById("menu-toggle");
     const mobileMenu = document.getElementById("mobile-menu");
     if (!menuToggle || !mobileMenu) return;
     menuToggle.addEventListener("click", function () {
       const isOpen = mobileMenu.classList.toggle("open");
+      mobileMenu.style.maxHeight = isOpen
+        ? mobileMenu.scrollHeight + "px"
+        : "0";
       menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
-    // Event Delegation for mobile menu links
+    // Close menu when link is clicked (mobile)
     mobileMenu.addEventListener("click", function (e) {
       if (e.target.tagName === "A") {
         mobileMenu.classList.remove("open");
+        mobileMenu.style.maxHeight = "0";
         menuToggle.setAttribute("aria-expanded", "false");
       }
     });
   }
 
-  // Modular Counter
+  // === Animated Statistics Counter ===
   function animateCounter(id, from, to, duration, postfix = "") {
     const el = document.getElementById(id);
     if (!el) return;
@@ -78,11 +80,12 @@
     requestAnimationFrame(step);
   }
 
-  // Parallax Effect for Shapes
+  // === Parallax Effect for Hero Shapes ===
   function setupParallaxShapes() {
-    const shapes = document.querySelectorAll(".parallax-shape");
+    const shapes = document.querySelectorAll(".hero-shape");
     let lastScrollY = 0;
     let ticking = false;
+    // Scroll-based parallax effect
     function updateParallax() {
       shapes.forEach((shape, idx) => {
         const scrollY = lastScrollY;
@@ -101,7 +104,7 @@
         ticking = true;
       }
     });
-    // Animate floating shapes (update CSS variable --floatY)
+    // Floating animation
     function animateShapes() {
       const now = Date.now();
       shapes.forEach((shape, idx) => {
@@ -117,7 +120,7 @@
     animateShapes();
   }
 
-  // Modular Smooth Scroll
+  // === Smooth Scroll for Anchor Links ===
   function setupSmoothScroll() {
     document.querySelectorAll(".smooth-scroll").forEach((el) => {
       el.addEventListener("click", function (e) {
@@ -133,11 +136,143 @@
     });
   }
 
-  // DOMContentLoaded main entry
+  // === Progressive Disclosure: Service Detail (With Animation) ===
+  function setupServiceDisclosure() {
+    const buttons = document.querySelectorAll(".service-more");
+    buttons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        // Tutup semua detail lain
+        buttons.forEach(function (otherBtn) {
+          const otherDetail = otherBtn.nextElementSibling;
+          if (otherBtn !== btn) {
+            if (otherDetail && otherDetail.classList.contains("open")) {
+              otherDetail.classList.remove("open");
+              otherBtn.setAttribute("aria-expanded", "false");
+              otherBtn.textContent = "Lihat Detail";
+            }
+          }
+        });
+        // Toggle current detail
+        const detail = this.nextElementSibling;
+        const expanded = this.getAttribute("aria-expanded") === "true";
+        if (detail) {
+          if (expanded) {
+            detail.classList.remove("open");
+          } else {
+            detail.classList.add("open");
+          }
+          this.setAttribute("aria-expanded", !expanded);
+          this.textContent = expanded ? "Lihat Detail" : "Tutup Detail";
+        }
+      });
+    });
+    // Reset: pastikan semua detail tertutup di awal
+    document
+      .querySelectorAll(".service-detail")
+      .forEach((d) => d.classList.remove("open"));
+  }
+
+  // === Testimonial Carousel (Auto-slide, star hover, dynamic load) ===
+  function setupTestimonialSection() {
+    const testimonials = [
+      {
+        avatar: "https://randomuser.me/api/portraits/women/45.jpg",
+        name: "Siti Aulia",
+        role: "Owner UMKM Fashion",
+        rating: 5,
+        text: "Digital Market membantu kami naik kelas di dunia online. Omzet meningkat 2x lipat, timnya responsif dan kreatif!",
+        ratingDetail: "Pelayanan sangat memuaskan!",
+      },
+      {
+        avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+        name: "Budi Santoso",
+        role: "Marketing Manager, PT. Sejahtera",
+        rating: 4,
+        text: "Sudah coba beberapa agency, baru kali ini dapat hasil signifikan. SEO & Ads-nya beneran efektif.",
+        ratingDetail: "Hasilnya signifikan, recommended.",
+      },
+      {
+        avatar: "https://randomuser.me/api/portraits/men/12.jpg",
+        name: "Rizky Firmansyah",
+        role: "Founder StartUp Kuliner",
+        rating: 5,
+        text: "Konten viral, engagement sosmed kami naik, dan support konsultasi sangat membantu!",
+        ratingDetail: "Support konsultasi sangat membantu.",
+      },
+    ];
+    const carousel = document.querySelector(".testimonial-carousel");
+    const prevBtn = document.querySelector(".testimonial-prev");
+    const nextBtn = document.querySelector(".testimonial-next");
+    let idx = 0,
+      autoSlide = null;
+
+    // Render active testimonial
+    function renderTestimonial(i) {
+      carousel.innerHTML = "";
+      const item = testimonials[i];
+      const wrap = document.createElement("div");
+      wrap.className = "testimonial-item active";
+      wrap.innerHTML = `
+        <img src="${item.avatar}" alt="${item.name}" class="testimonial-avatar">
+        <div class="testimonial-name">${item.name}</div>
+        <div class="testimonial-role">${item.role}</div>
+        <div class="testimonial-rating">
+          ${[...Array(5)]
+            .map(
+              (_, star) => `
+            <span class="star${
+              star < item.rating ? " filled" : ""
+            }" tabindex="0">
+              ★
+              <span class="star-detail">${item.ratingDetail || ""}</span>
+            </span>
+          `
+            )
+            .join("")}
+        </div>
+        <div class="testimonial-text">"${item.text}"</div>
+      `;
+      carousel.appendChild(wrap);
+      // Star hover/focus: show detail
+      wrap.querySelectorAll(".star").forEach((star) => {
+        star.addEventListener("mouseenter", function () {
+          this.querySelector(".star-detail").style.display = "block";
+        });
+        star.addEventListener("mouseleave", function () {
+          this.querySelector(".star-detail").style.display = "none";
+        });
+        star.addEventListener("focus", function () {
+          this.querySelector(".star-detail").style.display = "block";
+        });
+        star.addEventListener("blur", function () {
+          this.querySelector(".star-detail").style.display = "none";
+        });
+      });
+    }
+    // Show testimonial at index
+    function show(idxNew) {
+      idx = (idxNew + testimonials.length) % testimonials.length;
+      renderTestimonial(idx);
+    }
+    prevBtn.onclick = () => show(idx - 1);
+    nextBtn.onclick = () => show(idx + 1);
+
+    // Auto-slide every 5s
+    function auto() {
+      show(idx + 1);
+      autoSlide = setTimeout(auto, 5000);
+    }
+    show(0);
+    if (autoSlide) clearTimeout(autoSlide);
+    autoSlide = setTimeout(auto, 5000);
+    carousel.onmouseenter = () => clearTimeout(autoSlide);
+    carousel.onmouseleave = () => {
+      autoSlide = setTimeout(auto, 5000);
+    };
+  }
+
+  // === Initialize All on DOMContentLoaded ===
   document.addEventListener("DOMContentLoaded", function () {
-    // Kata utama
-    const mainStatic = "Strategi Digital yang ";
-    // Kata belakang untuk typing effect
     TypingEffect.start(
       [
         "Personal.",
@@ -146,7 +281,7 @@
         "Tumbuh Bersama Bisnismu.",
         "Prioritas Kami.",
       ],
-      mainStatic
+      "Strategi Digital yang "
     );
     setupHamburgerMenu();
     animateCounter("users-count", 0, 1688, 1400, "+");
@@ -154,5 +289,7 @@
     animateCounter("success-count", 0, 98, 1300, "%");
     setupParallaxShapes();
     setupSmoothScroll();
+    setupServiceDisclosure();
+    setupTestimonialSection();
   });
 })();
