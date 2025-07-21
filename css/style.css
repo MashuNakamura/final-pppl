@@ -1,0 +1,112 @@
+html {
+  scroll-behavior: smooth;
+}
+
+/* Animated gradient background */
+.animated-gradient {
+  background: linear-gradient(120deg, #e5e8ff 0%, #f7e8f8 100%);
+  background-size: 200% 200%;
+  animation: gradientmove 10s ease-in-out infinite;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.95;
+}
+@keyframes gradientmove {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Parallax floating shapes, soft color and smooth effect */
+.parallax-shape {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  will-change: transform;
+  transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  animation: shapeFloat 5s ease-in-out infinite alternate;
+}
+.shape1 {
+  top: 6%;
+  left: 4%;
+  animation-delay: 0s;
+}
+.shape2 {
+  bottom: 6%;
+  right: 14%;
+  animation-delay: 1.5s;
+}
+.shape3 {
+  top: 25%;
+  right: 6%;
+  animation-delay: 3s;
+}
+
+@keyframes shapeFloat {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(30px);
+  }
+}
+
+@media (max-width: 640px) {
+  .shape1,
+  .shape2,
+  .shape3 {
+    display: none;
+  }
+}
+
+/* Smooth drop-shadow for text */
+.drop-shadow {
+  text-shadow: 0 4px 24px #a3a3c8, 0 1px 1px #fff;
+}
+
+/* Navbar responsive */
+#mobile-menu {
+  /* default: collapsed */
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+#mobile-menu.open {
+  max-height: 300px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Hamburger animation (optional improvement) */
+#menu-toggle[aria-expanded="true"] svg {
+  transform: rotate(90deg);
+  transition: transform 0.2s;
+}
+
+/* Responsive section padding */
+@media (max-width: 768px) {
+  .hero-soft .pt-32 {
+    padding-top: 5.5rem !important;
+  }
+  .hero-soft .pb-20 {
+    padding-bottom: 3rem !important;
+  }
+}
+
+/* For accessibility: visually hide but screen reader visible */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

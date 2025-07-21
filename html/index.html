@@ -1,11 +1,339 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Digital Marketing</title>
+    <title>Digital Marketing Agency | Digital Market</title>
+    <meta
+      name="description"
+      content="Digital Marketing Agency: strategi digital kreatif, terukur, dan ramah untuk pertumbuhan bisnis Anda."
+    />
+    <meta
+      name="keywords"
+      content="digital marketing, agency, strategi digital, iklan, bisnis, kreatif, konsultasi"
+    />
+    <meta name="author" content="Digital Market" />
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="../js/script.js" defer></script>
   </head>
-  <body>
-    <h1>Hello World!</h1>
+  <body class="bg-[#f7f8fa] text-gray-800 font-sans">
+    <!-- Navbar Start -->
+    <nav
+      class="w-full bg-white/70 backdrop-blur-sm shadow fixed top-0 left-0 z-50"
+      aria-label="Main Navigation"
+    >
+      <div
+        class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center"
+      >
+        <a href="index.html" class="flex items-center gap-2" aria-label="Home">
+          <img
+            src="../favicon.svg"
+            alt="Digital Market Logo"
+            class="h-8 w-8"
+            loading="eager"
+          />
+          <span class="font-bold text-xl text-[#8e6fff]">Digital Market</span>
+        </a>
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex gap-6">
+          <a
+            href="index.html"
+            class="hover:text-[#8e6fff] font-medium transition"
+            aria-label="Home"
+            >Home</a
+          >
+          <a
+            href="about.html"
+            class="hover:text-[#8e6fff] font-medium transition"
+            aria-label="About"
+            >About</a
+          >
+          <a
+            href="services.html"
+            class="hover:text-[#8e6fff] font-medium transition"
+            aria-label="Services"
+            >Services</a
+          >
+          <a
+            href="portfolio.html"
+            class="hover:text-[#8e6fff] font-medium transition"
+            aria-label="Portfolio"
+            >Portfolio</a
+          >
+          <a
+            href="contact.html"
+            class="hover:text-[#8e6fff] font-medium transition"
+            aria-label="Contact"
+            >Contact</a
+          >
+        </div>
+        <!-- Hamburger Button -->
+        <button
+          id="menu-toggle"
+          aria-label="Buka menu navigasi"
+          class="md:hidden flex items-center justify-center w-10 h-10 rounded focus:outline-none focus:ring-2 focus:ring-[#8e6fff]"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span class="sr-only">Toggle navigation</span>
+          <svg
+            class="h-7 w-7 text-[#8e6fff]"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4 7h16M4 12h16M4 17h16"
+            />
+          </svg>
+        </button>
+      </div>
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="md:hidden absolute bg-white/95 shadow-lg w-full left-0 top-full transition-all duration-300 ease-in-out max-h-0 overflow-hidden"
+        aria-label="Menu Navigasi Mobile"
+      >
+        <div class="flex flex-col items-center gap-4 py-4">
+          <a
+            href="index.html"
+            class="block py-2 px-6 rounded hover:bg-[#f3f0ff] font-medium transition"
+            aria-label="Home"
+            >Home</a
+          >
+          <a
+            href="about.html"
+            class="block py-2 px-6 rounded hover:bg-[#f3f0ff] font-medium transition"
+            aria-label="About"
+            >About</a
+          >
+          <a
+            href="services.html"
+            class="block py-2 px-6 rounded hover:bg-[#f3f0ff] font-medium transition"
+            aria-label="Services"
+            >Services</a
+          >
+          <a
+            href="portfolio.html"
+            class="block py-2 px-6 rounded hover:bg-[#f3f0ff] font-medium transition"
+            aria-label="Portfolio"
+            >Portfolio</a
+          >
+          <a
+            href="contact.html"
+            class="block py-2 px-6 rounded hover:bg-[#f3f0ff] font-medium transition"
+            aria-label="Contact"
+            >Contact</a
+          >
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <main class="min-h-screen flex flex-col pt-20" id="main-content">
+      <!-- HERO SECTION Start -->
+      <section
+        class="hero-soft relative min-h-screen flex flex-col justify-center items-center overflow-hidden"
+        id="hero"
+      >
+        <!-- Animated Pastel Gradient Background -->
+        <div class="absolute inset-0 z-0 animated-gradient"></div>
+        <!-- Floating Soft Shapes (Animated + Parallax) -->
+        <svg
+          class="parallax-shape shape1"
+          width="180"
+          height="180"
+          viewBox="0 0 180 180"
+          fill="none"
+          aria-hidden="true"
+        >
+          <ellipse
+            cx="90"
+            cy="90"
+            rx="90"
+            ry="60"
+            fill="#B2B7FF"
+            fill-opacity="0.16"
+          />
+        </svg>
+        <svg
+          class="parallax-shape shape2"
+          width="120"
+          height="120"
+          viewBox="0 0 120 120"
+          fill="none"
+          aria-hidden="true"
+        >
+          <circle cx="60" cy="60" r="60" fill="#FFB6D9" fill-opacity="0.18" />
+        </svg>
+        <svg
+          class="parallax-shape shape3"
+          width="140"
+          height="140"
+          viewBox="0 0 140 140"
+          fill="none"
+          aria-hidden="true"
+        >
+          <ellipse
+            cx="70"
+            cy="70"
+            rx="50"
+            ry="70"
+            fill="#A4F1F4"
+            fill-opacity="0.16"
+          />
+        </svg>
+        <div
+          class="relative z-10 text-center max-w-3xl mx-auto px-4 pt-32 pb-20"
+        >
+          <h1
+            class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#4e4e61] mb-6 flex flex-col items-center gap-2 drop-shadow"
+          >
+            <span class="block">Digital Marketing Agency</span>
+            <span
+              class="text-[#8e6fff] font-bold text-2xl md:text-3xl mt-2 bg-white/40 px-4 py-1 rounded-xl shadow-lg"
+            >
+              <span id="typing"></span>
+            </span>
+          </h1>
+          <p class="text-xl text-[#5d5e73] mb-10 drop-shadow">
+            Solusi digital kreatif, terukur, dan ramah untuk pertumbuhan
+            bisnismu.
+          </p>
+          <a
+            href="#stats"
+            class="inline-block px-10 py-4 bg-[#8e6fff] text-white font-semibold rounded-full shadow-xl hover:bg-[#b5b8ff] hover:text-[#4e4e61] transition focus:outline-none text-lg smooth-scroll ring-2 ring-[#e6eaff] ring-offset-2"
+            aria-label="Konsultasi Gratis, scroll ke statistik"
+          >
+            Konsultasi Gratis
+          </a>
+        </div>
+        <div class="relative z-10 flex justify-center">
+          <a
+            href="#stats"
+            class="smooth-scroll"
+            aria-label="Scroll ke statistik"
+          >
+            <svg
+              class="mx-auto mt-12 animate-bounce w-8 h-8 text-[#8e6fff] opacity-80"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path d="M19 9l-7 7-7-7" />
+            </svg>
+          </a>
+        </div>
+      </section>
+      <!-- HERO SECTION End -->
+
+      <!-- STATISTICS COUNTER SECTION Start -->
+      <section
+        id="stats"
+        class="relative bg-white py-20 shadow-inner"
+        aria-label="Statistik Digital Market"
+      >
+        <div class="max-w-5xl mx-auto px-4">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+            <div>
+              <div
+                class="text-5xl font-extrabold text-[#8e6fff] drop-shadow-sm"
+                id="users-count"
+                aria-live="polite"
+              >
+                0
+              </div>
+              <div class="mt-2 text-lg font-medium text-gray-700">
+                Pengguna Puas
+              </div>
+            </div>
+            <div>
+              <div
+                class="text-5xl font-extrabold text-[#78d6d8] drop-shadow-sm"
+                id="projects-count"
+                aria-live="polite"
+              >
+                0
+              </div>
+              <div class="mt-2 text-lg font-medium text-gray-700">
+                Proyek Selesai
+              </div>
+            </div>
+            <div>
+              <div
+                class="text-5xl font-extrabold text-[#FFB6D9] drop-shadow-sm"
+                id="success-count"
+                aria-live="polite"
+              >
+                0
+              </div>
+              <div class="mt-2 text-lg font-medium text-gray-700">
+                Tingkat Keberhasilan (%)
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- STATISTICS COUNTER SECTION End -->
+    </main>
+
+    <!-- Footer Start -->
+    <footer
+      class="bg-white/80 border-t border-[#ececff] mt-10"
+      aria-label="Footer"
+    >
+      <div
+        class="max-w-6xl mx-auto px-4 py-8 flex flex-col md:flex-row justify-between items-center gap-4"
+      >
+        <div class="flex items-center gap-2">
+          <img
+            src="../favicon.svg"
+            alt="Digital Market Logo"
+            class="h-7 w-7"
+            loading="eager"
+          />
+          <span class="font-semibold text-[#8e6fff]">Digital Market</span>
+        </div>
+        <div class="text-gray-500 text-sm">
+          &copy; 2025 Digital Market. All rights reserved.
+        </div>
+        <div class="flex gap-4 text-[#8e6fff]">
+          <!-- Instagram icon -->
+          <a
+            href="https://www.instagram.com/himaifukdc/"
+            target="_blank"
+            aria-label="Instagram"
+            class="hover:opacity-70"
+          >
+            <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm4.25 3.25a5.25 5.25 0 1 1 0 10.5 5.25 5.25 0 0 1 0-10.5zm0 1.5a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5zm5.25 1a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"
+              />
+            </svg>
+          </a>
+          <!-- Email icon -->
+          <a
+            href="mailto:hima.informatika@ukdc.ac.id"
+            aria-label="Email"
+            class="hover:opacity-70"
+          >
+            <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M2.01 4.93A2.005 2.005 0 0 1 3.99 4h16.02c.89 0 1.65.58 1.9 1.42l-9.91 7.1-9.9-7.1zm-.01 2.54v11.58C2 20.1 3.87 22 6.01 22h11.98c2.15 0 4.01-1.9 4.01-4.05V7.47l-8.99 6.45a1.003 1.003 0 0 1-1.18 0L2 7.47z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer End -->
   </body>
 </html>
