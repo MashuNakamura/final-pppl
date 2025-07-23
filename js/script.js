@@ -1,5 +1,5 @@
 (function () {
-  // === Dynamic Typing Effect for Headline ===
+  // Dynamic typing effect untuk headline
   const TypingEffect = (function () {
     let instance;
     function init(words, mainStatic = "") {
@@ -40,28 +40,20 @@
     };
   })();
 
-  // === Hamburger (Mobile) Menu Toggle ===
+  // Hamburger menu untuk mobile
   function setupHamburgerMenu() {
     const menuToggle = document.getElementById("menu-toggle");
     const mobileMenu = document.getElementById("mobile-menu");
     if (!menuToggle || !mobileMenu) return;
-
-    // Set initial state (avoid shaking on load)
     mobileMenu.classList.remove("open");
     mobileMenu.style.maxHeight = "0";
-
     menuToggle.addEventListener("click", function () {
       const isOpen = mobileMenu.classList.toggle("open");
-      // Only set maxHeight on open, let CSS handle close
-      if (isOpen) {
-        mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
-      } else {
-        mobileMenu.style.maxHeight = "0";
-      }
+      mobileMenu.style.maxHeight = isOpen
+        ? mobileMenu.scrollHeight + "px"
+        : "0";
       menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
-
-    // Close menu when link is clicked (mobile)
     mobileMenu.addEventListener("click", function (e) {
       if (e.target.tagName === "A") {
         mobileMenu.classList.remove("open");
@@ -71,7 +63,7 @@
     });
   }
 
-  // === Animated Statistics Counter ===
+  // Statistik counter animasi
   function animateCounter(id, from, to, duration, postfix = "") {
     const el = document.getElementById(id);
     if (!el) return;
@@ -89,12 +81,11 @@
     requestAnimationFrame(step);
   }
 
-  // === Parallax Effect for Hero Shapes ===
+  // Parallax animasi untuk elemen shape di hero
   function setupParallaxShapes() {
     const shapes = document.querySelectorAll(".hero-shape");
-    let lastScrollY = 0;
-    let ticking = false;
-    // Scroll-based parallax effect
+    let lastScrollY = 0,
+      ticking = false;
     function updateParallax() {
       shapes.forEach((shape, idx) => {
         const scrollY = lastScrollY;
@@ -113,7 +104,6 @@
         ticking = true;
       }
     });
-    // Floating animation
     function animateShapes() {
       const now = Date.now();
       shapes.forEach((shape, idx) => {
@@ -129,7 +119,7 @@
     animateShapes();
   }
 
-  // === Smooth Scroll for Anchor Links ===
+  // Scroll halus untuk anchor & tombol CTA
   function setupSmoothScroll() {
     document.querySelectorAll(".smooth-scroll").forEach((el) => {
       el.addEventListener("click", function (e) {
@@ -145,12 +135,11 @@
     });
   }
 
-  // === Progressive Disclosure: Service Detail (With Animation) ===
+  // Detail layanan buka/tutup satu per satu
   function setupServiceDisclosure() {
     const buttons = document.querySelectorAll(".service-more");
     buttons.forEach(function (btn) {
       btn.addEventListener("click", function () {
-        // Tutup semua detail lain
         buttons.forEach(function (otherBtn) {
           const otherDetail = otherBtn.nextElementSibling;
           if (otherBtn !== btn) {
@@ -161,27 +150,22 @@
             }
           }
         });
-        // Toggle current detail
         const detail = this.nextElementSibling;
         const expanded = this.getAttribute("aria-expanded") === "true";
         if (detail) {
-          if (expanded) {
-            detail.classList.remove("open");
-          } else {
-            detail.classList.add("open");
-          }
+          if (expanded) detail.classList.remove("open");
+          else detail.classList.add("open");
           this.setAttribute("aria-expanded", !expanded);
           this.textContent = expanded ? "Lihat Detail" : "Tutup Detail";
         }
       });
     });
-    // Reset: pastikan semua detail tertutup di awal
     document
       .querySelectorAll(".service-detail")
       .forEach((d) => d.classList.remove("open"));
   }
 
-  // === Testimonial Carousel (Auto-slide, star hover, dynamic load) ===
+  // Testimonial carousel otomatis dan interaktif
   function setupTestimonialSection() {
     const testimonials = [
       {
@@ -214,8 +198,6 @@
     const nextBtn = document.querySelector(".testimonial-next");
     let idx = 0,
       autoSlide = null;
-
-    // Render active testimonial
     function renderTestimonial(i) {
       carousel.innerHTML = "";
       const item = testimonials[i];
@@ -242,7 +224,6 @@
         <div class="testimonial-text">"${item.text}"</div>
       `;
       carousel.appendChild(wrap);
-      // Star hover/focus: show detail
       wrap.querySelectorAll(".star").forEach((star) => {
         star.addEventListener("mouseenter", function () {
           this.querySelector(".star-detail").style.display = "block";
@@ -258,15 +239,12 @@
         });
       });
     }
-    // Show testimonial at index
     function show(idxNew) {
       idx = (idxNew + testimonials.length) % testimonials.length;
       renderTestimonial(idx);
     }
     prevBtn.onclick = () => show(idx - 1);
     nextBtn.onclick = () => show(idx + 1);
-
-    // Auto-slide every 5s
     function auto() {
       show(idx + 1);
       autoSlide = setTimeout(auto, 5000);
@@ -280,7 +258,7 @@
     };
   }
 
-  // === Initialize All on DOMContentLoaded ===
+  // Init semua fitur saat halaman siap
   document.addEventListener("DOMContentLoaded", function () {
     TypingEffect.start(
       [

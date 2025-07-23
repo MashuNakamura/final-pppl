@@ -1,0 +1,127 @@
+body {
+  background: #f6f4ff;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Snackbar popout (animasi custom) */
+.snackbar {
+  position: fixed;
+  top: 70px;
+  right: 32px;
+  min-width: 250px;
+  max-width: 320px;
+  background: #8e6fff;
+  color: #fff;
+  padding: 1rem 1.3rem;
+  border-radius: 9px;
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: 0 6px 24px #8e6fff40;
+  opacity: 0;
+  z-index: 9999;
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s;
+  transform: translateY(-16px) scale(0.98);
+}
+.snackbar.show {
+  opacity: 0.98;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+.snackbar.success {
+  background: #49e097;
+}
+.snackbar.error {
+  background: #e04965;
+}
+.snackbar.info {
+  background: #8e6fff;
+}
+@media (max-width: 600px) {
+  .snackbar {
+    top: 70px;
+    right: 12px;
+    left: auto;
+    max-width: 97vw;
+    font-size: 0.97rem;
+    padding: 0.7rem 1rem;
+  }
+}
+
+/* Custom warning (custom effect) */
+.custom-warning {
+  background: #fffbe9;
+  border-left: 6px solid #e6c700;
+  color: #9d7a00;
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 0.6rem 0 0.2rem 0;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  display: none;
+}
+
+/* Pagination (custom effect, optional) */
+.custom-pagination button {
+  background: #8e6fff;
+  color: #fff;
+  border: none;
+  padding: 0.47rem 1rem;
+  border-radius: 7px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.17s;
+}
+.custom-pagination button.active,
+.custom-pagination button:hover {
+  background: #6e4fff;
+}
+.custom-pagination button:disabled {
+  background: #ddd;
+  color: #aaa;
+  cursor: default;
+}
+
+/* Custom list card selected effect */
+.custom-list-card.selected {
+  border: 2px solid #8e6fff;
+  background: #f3f0ff;
+}
+
+/* Responsive fixes for custom classes */
+@media (max-width: 900px) {
+  .custom-list {
+    grid-template-columns: 1fr !important;
+  }
+}
+@media (max-width: 600px) {
+  .section {
+    padding: 2.1rem 0.5rem 1.3rem 0.5rem;
+  }
+  .section-title {
+    font-size: 1.3rem;
+    margin-bottom: 1.1rem;
+  }
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.9rem;
+    padding: 1.2rem 0.7rem;
+  }
+}
+
+/* Mobile menu transition (custom effect) */
+#mobile-menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.36s cubic-bezier(0.4, 2, 0.6, 1);
+  pointer-events: none;
+  opacity: 0;
+}
+#mobile-menu.open {
+  max-height: 400px;
+  pointer-events: auto;
+  opacity: 1;
+}
