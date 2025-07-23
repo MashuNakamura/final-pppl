@@ -71,6 +71,24 @@ const servicesData = [
     duration: "1-2 bulan",
     features: ["Landing Page", "UI/UX", "Integrasi Form", "SEO Basic"],
   },
+  {
+    id: "smm",
+    title: "Social Media Management",
+    desc: "Manajemen dan optimasi Instagram, Facebook, TikTok bisnis Anda.",
+    price: 850000,
+    category: "digital",
+    duration: "1 bulan",
+    features: ["Strategi Konten", "Posting Terjadwal", "Laporan Bulanan"],
+  },
+  {
+    id: "branding",
+    title: "Branding & Identity",
+    desc: "Jasa pembuatan logo, desain identitas, dan brand guideline profesional.",
+    price: 1700000,
+    category: "creative",
+    duration: "2 minggu",
+    features: ["Logo", "Brand Voice", "Guideline", "Stationery"],
+  },
 ];
 
 const extraPrice = {
@@ -103,13 +121,24 @@ function renderGabunganPaketList(filterCategory = "all", page = 1) {
     page * CUSTOMS_PER_PAGE
   );
 
+  // Tampilan empty state yang lebih bagus dan user friendly
   if (filtered.length === 0) {
-    container.innerHTML = `<div class="custom-list-empty">Belum ada gabungan paket tersimpan.</div>`;
+    container.innerHTML = `
+    <div class="custom-list-empty-tailwind flex flex-col items-center justify-center gap-2 px-6 py-10 rounded-xl bg-white shadow-lg text-center border border-[#e5e1fa]">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#8e6fff" stroke-width="2.3" viewBox="0 0 24 24" class="mx-auto mb-2" style="width:42px;height:42px;opacity:0.6;">
+        <circle cx="12" cy="12" r="9" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v5" />
+        <circle cx="12" cy="16" r="1.2" fill="#8e6fff" />
+      </svg>
+      <span class="font-semibold text-[#8e6fff]">Belum ada gabungan paket tersimpan.</span>
+      <span class="text-[#3d347d] font-medium">Silahkan menambahkan Kustomisasi untuk menampilkan list di sini.</span>
+    </div>
+  `;
     document.getElementById("custom-pagination").innerHTML = "";
     return;
   }
   container.innerHTML = "";
-  pagedData.forEach((cust, idx) => {
+  pagedData.forEach((cust) => {
     const div = document.createElement("div");
     div.className =
       "custom-list-card bg-white rounded-xl shadow p-6 flex flex-col border-2 border-transparent mb-4";
@@ -158,36 +187,62 @@ function renderGabunganPaketList(filterCategory = "all", page = 1) {
       }
     };
   });
+
+  // MODAL KONFIRMASI HAPUS
+  let pendingDeleteId = null;
+  let pendingDeleteCallback = null;
   container.querySelectorAll(".custom-list-delete").forEach((btn) => {
     btn.onclick = function () {
-      const id = btn.getAttribute("data-id");
-      let allData = loadCustomizations();
-      allData = allData.filter((c) => c.id !== id);
-      saveCustomizations(allData);
-      clearEditCache();
-      let newPage = page;
-      let filteredAfterDelete = allData;
-      if (filterCategory !== "all") {
-        filteredAfterDelete = allData.filter((cust) =>
-          cust.services.some((id) => {
-            const s = servicesData.find((x) => x.id === id);
-            return s && s.category === filterCategory;
-          })
+      pendingDeleteId = btn.getAttribute("data-id");
+      pendingDeleteCallback = () => {
+        let allData = loadCustomizations();
+        allData = allData.filter((c) => c.id !== pendingDeleteId);
+        saveCustomizations(allData);
+        clearEditCache();
+        let newPage = page;
+        let filteredAfterDelete = allData;
+        if (filterCategory !== "all") {
+          filteredAfterDelete = allData.filter((cust) =>
+            cust.services.some((id) => {
+              const s = servicesData.find((x) => x.id === id);
+              return s && s.category === filterCategory;
+            })
+          );
+        }
+        const totalPagesAfterDelete = Math.max(
+          1,
+          Math.ceil(filteredAfterDelete.length / CUSTOMS_PER_PAGE)
         );
-      }
-      const totalPagesAfterDelete = Math.max(
-        1,
-        Math.ceil(filteredAfterDelete.length / CUSTOMS_PER_PAGE)
-      );
-      if (newPage > totalPagesAfterDelete) newPage = totalPagesAfterDelete;
-      renderGabunganPaketList(filterCategory, newPage);
-      renderCustomForm();
-      showSnackbar("Kustomisasi berhasil dihapus", "success");
-      document.getElementById("custom-result").textContent =
-        "Kustomisasi berhasil dihapus";
-      document.getElementById("custom-result").style.color = "#3d347d";
+        if (newPage > totalPagesAfterDelete) newPage = totalPagesAfterDelete;
+        renderGabunganPaketList(filterCategory, newPage);
+        renderCustomForm();
+        showSnackbar("Kustomisasi berhasil dihapus", "success");
+        document.getElementById("custom-result").textContent =
+          "Kustomisasi berhasil dihapus";
+        document.getElementById("custom-result").style.color = "#3d347d";
+        // Reset
+        pendingDeleteId = null;
+        pendingDeleteCallback = null;
+      };
+      // Show modal
+      document.getElementById("confirm-modal").classList.remove("hidden");
     };
   });
+
+  // Modal event (hanya perlu aktifkan satu kali, jangan double)
+  const confirmCancelBtn = document.getElementById("confirm-cancel");
+  const confirmDeleteBtn = document.getElementById("confirm-delete");
+  if (confirmCancelBtn && confirmDeleteBtn) {
+    confirmCancelBtn.onclick = function () {
+      document.getElementById("confirm-modal").classList.add("hidden");
+      pendingDeleteId = null;
+      pendingDeleteCallback = null;
+    };
+    confirmDeleteBtn.onclick = function () {
+      document.getElementById("confirm-modal").classList.add("hidden");
+      if (pendingDeleteCallback) pendingDeleteCallback();
+    };
+  }
 }
 
 function renderCustomPagination(totalPages, currentPage, filterCategory) {

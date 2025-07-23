@@ -352,7 +352,7 @@
         <div
           class="custom-list-filter flex items-center gap-2 mt-8 mb-3 font-semibold"
         >
-          <label for="custom-filter-category" class="text-[#3d347d]"
+          <label for="custom-filter-category" class="text-[#3d347d] p-3"
             >Filter Kustomisasi:</label
           >
           <select
@@ -367,7 +367,7 @@
           </select>
         </div>
         <!-- Card list gabungan kustomisasi (pagination tetap) -->
-        <div id="gabungan-paket-list" class="my-6"></div>
+        <div id="gabungan-paket-list" class="my-6 p-3"></div>
         <div
           id="custom-pagination"
           class="custom-pagination flex justify-center gap-3 mb-8"
@@ -423,5 +423,53 @@
       </div>
     </footer>
     <!-- Footer End -->
+
+    <!-- Modal Konfirmasi Hapus Gabungan Paket -->
+    <div
+      id="confirm-modal"
+      class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/30 backdrop-blur-sm hidden"
+    >
+      <div
+        class="bg-white rounded-xl shadow-2xl max-w-sm w-full p-7 border border-[#e5e1fa] flex flex-col items-center text-center animate-fadein"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="mb-4"
+          width="44"
+          height="44"
+          fill="none"
+          stroke="#8e6fff"
+          stroke-width="2.2"
+          viewBox="0 0 24 24"
+        >
+          <circle cx="12" cy="12" r="9" />
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M15 9l-6 6M9 9l6 6"
+          />
+        </svg>
+        <div class="font-bold text-[#8e6fff] text-lg mb-2">
+          Konfirmasi Hapus
+        </div>
+        <div class="text-[#3d347d] mb-5 font-medium">
+          Apakah Anda yakin ingin menghapus gabungan paket ini?
+        </div>
+        <div class="flex gap-4 w-full justify-center">
+          <button
+            id="confirm-cancel"
+            class="px-6 py-2 rounded-lg font-semibold bg-[#f3f0ff] text-[#8e6fff] hover:bg-[#ececff] transition"
+          >
+            Batal
+          </button>
+          <button
+            id="confirm-delete"
+            class="px-6 py-2 rounded-lg font-semibold bg-[#e04965] text-white hover:bg-[#c0344e] transition"
+          >
+            Hapus
+          </button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
