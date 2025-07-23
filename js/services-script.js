@@ -14,19 +14,17 @@ function setupHamburgerMenu() {
   const menuToggle = document.getElementById("menu-toggle");
   const mobileMenu = document.getElementById("mobile-menu");
   if (menuToggle && mobileMenu) {
-    mobileMenu.classList.remove("open");
-    mobileMenu.style.display = "none";
-    menuToggle.setAttribute("aria-expanded", "false");
     menuToggle.addEventListener("click", function () {
-      const isOpen = !mobileMenu.classList.contains("open");
-      mobileMenu.classList.toggle("open", isOpen);
-      mobileMenu.style.display = isOpen ? "flex" : "none";
+      const isOpen = mobileMenu.classList.toggle("open");
+      mobileMenu.style.maxHeight = isOpen
+        ? mobileMenu.scrollHeight + "px"
+        : "0";
       menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
     mobileMenu.addEventListener("click", function (e) {
       if (e.target.tagName === "A") {
         mobileMenu.classList.remove("open");
-        mobileMenu.style.display = "none";
+        mobileMenu.style.maxHeight = "0";
         menuToggle.setAttribute("aria-expanded", "false");
       }
     });

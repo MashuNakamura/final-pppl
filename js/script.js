@@ -44,23 +44,22 @@
   function setupHamburgerMenu() {
     const menuToggle = document.getElementById("menu-toggle");
     const mobileMenu = document.getElementById("mobile-menu");
-    if (!menuToggle || !mobileMenu) return;
-    mobileMenu.classList.remove("open");
-    mobileMenu.style.maxHeight = "0";
-    menuToggle.addEventListener("click", function () {
-      const isOpen = mobileMenu.classList.toggle("open");
-      mobileMenu.style.maxHeight = isOpen
-        ? mobileMenu.scrollHeight + "px"
-        : "0";
-      menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    });
-    mobileMenu.addEventListener("click", function (e) {
-      if (e.target.tagName === "A") {
-        mobileMenu.classList.remove("open");
-        mobileMenu.style.maxHeight = "0";
-        menuToggle.setAttribute("aria-expanded", "false");
-      }
-    });
+    if (menuToggle && mobileMenu) {
+      menuToggle.addEventListener("click", function () {
+        const isOpen = mobileMenu.classList.toggle("open");
+        mobileMenu.style.maxHeight = isOpen
+          ? mobileMenu.scrollHeight + "px"
+          : "0";
+        menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      });
+      mobileMenu.addEventListener("click", function (e) {
+        if (e.target.tagName === "A") {
+          mobileMenu.classList.remove("open");
+          mobileMenu.style.maxHeight = "0";
+          menuToggle.setAttribute("aria-expanded", "false");
+        }
+      });
+    }
   }
 
   // Statistik counter animasi

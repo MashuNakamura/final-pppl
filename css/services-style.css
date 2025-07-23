@@ -114,16 +114,15 @@ body {
 
 /* Mobile menu transition (custom effect) */
 #mobile-menu {
+  transition: max-height 0.36s cubic-bezier(0.4, 2, 0.6, 1), opacity 0.3s;
   max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.36s cubic-bezier(0.4, 2, 0.6, 1);
-  pointer-events: none;
   opacity: 0;
+  pointer-events: none;
 }
 #mobile-menu.open {
   max-height: 400px;
-  pointer-events: auto;
   opacity: 1;
+  pointer-events: auto;
 }
 
 .compare-table-wrap {
@@ -260,4 +259,10 @@ body {
 }
 .animate-fadein {
   animation: fadein 0.25s;
+}
+
+.section {
+  padding: 5.5rem 1.1rem 2.5rem 1.1rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }

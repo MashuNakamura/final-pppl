@@ -10,7 +10,6 @@ function setupHamburgerMenu() {
         : "0";
       menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
-    // Tutup menu saat link diklik
     mobileMenu.addEventListener("click", function (e) {
       if (e.target.tagName === "A") {
         mobileMenu.classList.remove("open");
