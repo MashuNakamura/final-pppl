@@ -255,15 +255,11 @@ body {
   }
 }
 
-/* Statistics */
+/* Statistik */
 .stat-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
-  gap: 1.8rem 2.2rem;
-  max-width: 700px;
-  margin: 0 auto;
+  margin: 0 auto 2rem auto;
+  max-width: 900px;
   padding: 0 1.3rem;
-  justify-items: center;
 }
 .stat-item {
   display: flex;
@@ -285,6 +281,11 @@ body {
   text-align: center;
   opacity: 0.8;
   font-weight: 500;
+}
+@media (max-width: 600px) {
+  .stat-grid {
+    gap: 1.2rem 0.4rem;
+  }
 }
 
 /* Company Values 3x2 */

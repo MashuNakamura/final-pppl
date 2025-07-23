@@ -31,7 +31,7 @@ function revealAllTimeline() {
   });
 }
 
-// Counter animasi untuk statistik
+// Counter animasi untuk statistik (6 statistik: 3 index + 3 tambahan)
 function animateCounter(id, to, duration = 1200, postfix = "") {
   const el = document.getElementById(id);
   if (!el) return;
@@ -58,10 +58,14 @@ function checkStatsInView() {
   const rect = stats.getBoundingClientRect();
   if (!statsAnimated && rect.top < window.innerHeight - 80) {
     statsAnimated = true;
-    animateCounter("stat-client", 400, 1100, "+");
-    animateCounter("stat-project", 210, 1300, "+");
-    animateCounter("stat-growth", 180, 1400, "%");
-    animateCounter("stat-award", 7, 1300, "");
+    // 3 dari index.html (angka contoh, bisa disesuaikan)
+    animateCounter("stat-users", 1688, 1100, "+"); // Pengguna
+    animateCounter("stat-projects", 340, 1200, "+"); // Proyek Selesai
+    animateCounter("stat-success", 98, 1300, "%"); // Tingkat Keberhasilan
+    // 3 tambahan baru (dummy angka, bisa custom)
+    animateCounter("stat-client", 400, 1100, "+"); // Klien
+    animateCounter("stat-growth", 180, 1400, "%"); // Pertumbuhan (%)
+    animateCounter("stat-award", 7, 1300, ""); // Penghargaan
   }
 }
 

@@ -302,20 +302,30 @@
       <!-- Statistik -->
       <section id="stats" class="section">
         <h2 class="section-title">Statistik Kami</h2>
-        <div class="stat-grid">
-          <div class="stat-item">
+        <div
+          class="stat-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          <div class="stat-item flex flex-col items-center">
+            <div class="stat-number"><span id="stat-users"></span></div>
+            <div class="stat-label">Pengguna</div>
+          </div>
+          <div class="stat-item flex flex-col items-center">
+            <div class="stat-number"><span id="stat-projects"></span></div>
+            <div class="stat-label">Proyek Selesai</div>
+          </div>
+          <div class="stat-item flex flex-col items-center">
+            <div class="stat-number"><span id="stat-success"></span></div>
+            <div class="stat-label">Tingkat Keberhasilan</div>
+          </div>
+          <div class="stat-item flex flex-col items-center">
             <div class="stat-number"><span id="stat-client"></span></div>
             <div class="stat-label">Klien</div>
           </div>
-          <div class="stat-item">
-            <div class="stat-number"><span id="stat-project"></span></div>
-            <div class="stat-label">Proyek Selesai</div>
-          </div>
-          <div class="stat-item">
+          <div class="stat-item flex flex-col items-center">
             <div class="stat-number"><span id="stat-growth"></span></div>
             <div class="stat-label">Pertumbuhan (%)</div>
           </div>
-          <div class="stat-item">
+          <div class="stat-item flex flex-col items-center">
             <div class="stat-number"><span id="stat-award"></span></div>
             <div class="stat-label">Penghargaan</div>
           </div>
