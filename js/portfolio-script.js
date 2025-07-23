@@ -1,3 +1,26 @@
+// Hamburger menu untuk navbar mobile
+function setupHamburgerMenu() {
+  const menuToggle = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener("click", function () {
+      const isOpen = mobileMenu.classList.toggle("open");
+      mobileMenu.style.maxHeight = isOpen
+        ? mobileMenu.scrollHeight + "px"
+        : "0";
+      menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+    // Tutup menu saat link diklik
+    mobileMenu.addEventListener("click", function (e) {
+      if (e.target.tagName === "A") {
+        mobileMenu.classList.remove("open");
+        mobileMenu.style.maxHeight = "0";
+        menuToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+}
+
 // Dummy Data Portfolio
 const portfolioData = [
   {
@@ -45,7 +68,23 @@ const portfolioData = [
   // Tambah data lain sesuai kebutuhan
 ];
 
-// Filter Portfolio
+// Format jenis project
+function formatType(type) {
+  switch (type) {
+    case "website":
+      return "Website";
+    case "ads":
+      return "Digital Ads";
+    case "branding":
+      return "Branding";
+    case "creative":
+      return "Kreatif";
+    default:
+      return "Lainnya";
+  }
+}
+
+// Render Portfolio Grid
 function renderPortfolioGrid(filter = "all") {
   const grid = document.getElementById("portfolio-grid");
   let filtered =
@@ -55,7 +94,6 @@ function renderPortfolioGrid(filter = "all") {
   grid.innerHTML = "";
 
   if (filtered.length === 0) {
-    // Tampilkan card info jika tidak ada data
     grid.innerHTML = `
       <div class="col-span-full flex justify-center">
         <div class="bg-[#f3f0ff] border border-[#ececff] rounded-xl shadow p-8 flex flex-col items-center w-full max-w-md mx-auto">
@@ -84,7 +122,7 @@ function renderPortfolioGrid(filter = "all") {
         project.id
       }">Detail Proyek</button>
     `;
-    // Gallery click
+    // Gallery click (thumbnail to lightbox)
     card.querySelector(".portfolio-img").addEventListener("click", function () {
       showLightbox(project.gallery[0]);
     });
@@ -96,22 +134,6 @@ function renderPortfolioGrid(filter = "all") {
       });
     grid.appendChild(card);
   });
-}
-
-// Format jenis project
-function formatType(type) {
-  switch (type) {
-    case "website":
-      return "Website";
-    case "ads":
-      return "Digital Ads";
-    case "branding":
-      return "Branding";
-    case "creative":
-      return "Kreatif";
-    default:
-      return "Lainnya";
-  }
 }
 
 // Filter Button Logic
@@ -126,6 +148,7 @@ document.addEventListener("DOMContentLoaded", function () {
       renderPortfolioGrid(btn.dataset.filter);
     });
   });
+  setupHamburgerMenu();
 });
 
 // Modal Project Detail
