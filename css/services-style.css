@@ -125,3 +125,89 @@ body {
   pointer-events: auto;
   opacity: 1;
 }
+
+.compare-table-wrap {
+  border-radius: 1rem;
+  box-shadow: 0 6px 32px 0 rgba(112, 96, 192, 0.07);
+  background: transparent;
+}
+
+.compare-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.compare-table th,
+.compare-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #ececff;
+}
+
+.compare-table th {
+  background: #f3f0ff;
+  color: #8e6fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+}
+
+.compare-table td {
+  background: #fff;
+  color: #3d347d;
+  font-size: 1rem;
+  vertical-align: middle;
+}
+
+.compare-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Badge style untuk "Bisa digabungkan" */
+.compare-table .badge {
+  background: #f6f4ff;
+  color: #8e6fff;
+  border-radius: 0.6rem;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.85em;
+  font-weight: 600;
+  display: inline-block;
+}
+
+/* Hover effect for table row */
+.compare-table tbody tr:hover td {
+  background: #f3f0ff;
+  transition: background 0.18s;
+}
+
+/* Responsive Table */
+@media (max-width: 800px) {
+  .compare-table-wrap {
+    box-shadow: none;
+    border-radius: 0.5rem;
+  }
+  .compare-table th,
+  .compare-table td {
+    padding: 0.6rem 0.6rem;
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 600px) {
+  .compare-table-wrap {
+    margin-left: -1rem !important;
+    margin-right: -1rem !important;
+  }
+  .compare-table th,
+  .compare-table td {
+    padding: 0.45rem 0.4rem;
+    font-size: 0.9rem;
+  }
+  .compare-table td {
+    word-break: break-word;
+  }
+  .compare-table {
+    font-size: 0.93rem;
+  }
+}

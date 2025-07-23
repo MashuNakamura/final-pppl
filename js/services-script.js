@@ -165,10 +165,8 @@ function renderGabunganPaketList(filterCategory = "all", page = 1) {
       allData = allData.filter((c) => c.id !== id);
       saveCustomizations(allData);
       clearEditCache();
-      // Setelah hapus, re-render gabungan dan pagination
-      // Pastikan tetap di page sekarang, atau ke page 1 jika data habis
       let newPage = page;
-      const filteredAfterDelete = allData;
+      let filteredAfterDelete = allData;
       if (filterCategory !== "all") {
         filteredAfterDelete = allData.filter((cust) =>
           cust.services.some((id) => {
@@ -319,7 +317,7 @@ function renderCompareTable() {
       <td>Rp${s.price.toLocaleString()}</td>
       <td>${s.features.join(", ")}</td>
       <td>${s.duration}</td>
-      <td>Bisa digabungkan</td>
+      <td><span class="badge">Bisa digabung</span></td>
     `;
     tbody.appendChild(tr);
   });
@@ -508,6 +506,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   setupCalculator();
   renderCompareTable();
+  renderCustomForm();
   setupCustomForm();
   renderGabunganPaketList();
 });
