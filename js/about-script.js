@@ -21,15 +21,13 @@ function setupHamburgerMenu() {
   }
 }
 
-// Timeline animasi saat scroll
-function revealTimelineOnScroll() {
+// Timeline animasi (semua item langsung muncul dengan animasi berurutan)
+function revealAllTimeline() {
   const items = document.querySelectorAll(".timeline-item");
-  const trigger = window.innerHeight * 0.87;
-  items.forEach((item) => {
-    const rect = item.getBoundingClientRect();
-    if (rect.top < trigger) {
+  items.forEach((item, i) => {
+    setTimeout(() => {
       item.classList.add("visible");
-    }
+    }, 150 * i);
   });
 }
 
@@ -67,11 +65,10 @@ function checkStatsInView() {
   }
 }
 
-// Init semua fitur saat halaman siap
+// Init
 document.addEventListener("DOMContentLoaded", function () {
   setupHamburgerMenu();
-  document.addEventListener("scroll", revealTimelineOnScroll);
-  revealTimelineOnScroll();
+  revealAllTimeline();
   document.addEventListener("scroll", checkStatsInView);
   checkStatsInView();
 });

@@ -364,3 +364,14 @@ body {
 #mobile-menu.open {
   max-height: 400px;
 }
+
+.team-card-wide {
+  max-width: 400px;
+  min-width: 320px;
+}
+@media (max-width: 900px) {
+  .team-card-wide {
+    max-width: 98vw;
+    min-width: 0;
+  }
+}
