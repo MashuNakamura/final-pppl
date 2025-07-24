@@ -75,9 +75,6 @@ final-pppl/
 │   ├── portfolio-script.js
 │   ├── contact-script.js
 │   └── blog-script.js
-├── assets/
-│   ├── images/
-│   └── icons/
 ├── favicon.svg
 └── README.md
 ```
