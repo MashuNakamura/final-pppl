@@ -135,6 +135,14 @@ body {
   color: #aaa;
   cursor: default;
 }
+.blog-list.no-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 340px;
+  height: 45vh;
+}
 #detail-modal,
 #share-modal {
   animation: fadeIn 0.24s;

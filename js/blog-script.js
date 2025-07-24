@@ -203,9 +203,28 @@ function renderBlogList(filterCategory = "all", searchQuery = "", page = 1) {
   container.innerHTML = "";
 
   if (filtered.length === 0) {
-    container.innerHTML = `<div class="text-center text-[#8e6fff] font-semibold py-12">Tidak ada artikel ditemukan.</div>`;
+    container.classList.add("no-result");
+    container.innerHTML = `
+    <div class="flex flex-col items-center justify-center py-14 gap-3">
+      <svg width="70" height="70" fill="none" viewBox="0 0 80 80">
+        <circle cx="40" cy="40" r="35" fill="#ececff"/>
+        <path d="M52 52l12 12" stroke="#8e6fff" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="40" cy="40" r="18" stroke="#8e6fff" stroke-width="3" fill="#fff"/>
+        <text x="40" y="47" text-anchor="middle" font-size="22" fill="#8e6fff" font-family="Arial" font-weight="bold">?</text>
+      </svg>
+      <div class="text-2xl font-bold text-[#8e6fff] mt-2">Artikel tidak ditemukan</div>
+      <div class="text-base text-[#514a7f] opacity-80 text-center max-w-sm mb-2">
+        Coba kata kunci lain atau pilih kategori berbeda.<br>
+        Pastikan pencarian Anda benar dan sesuai topik blog.
+      </div>
+      <button onclick="document.getElementById('search-bar').value='';document.getElementById('category-filter').value='all';renderBlogList('all','','',1);"
+        class="mt-2 px-4 py-2 rounded-lg bg-[#8e6fff] text-white font-semibold shadow hover:bg-[#6e4fff] transition">Reset pencarian</button>
+    </div>
+  `;
     document.getElementById("blog-pagination").innerHTML = "";
     return;
+  } else {
+    container.classList.remove("no-result");
   }
 
   pagedData.forEach((art) => {
