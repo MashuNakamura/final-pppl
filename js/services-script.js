@@ -97,7 +97,6 @@ const extraPrice = {
 };
 const CUSTOMS_PER_PAGE = 3;
 
-// Gabungan Paket List dengan Pagination
 function renderGabunganPaketList(filterCategory = "all", page = 1) {
   const data = loadCustomizations();
   const container = document.getElementById("gabungan-paket-list");
@@ -111,15 +110,12 @@ function renderGabunganPaketList(filterCategory = "all", page = 1) {
       })
     );
   }
-
   const totalPages = Math.max(1, Math.ceil(filtered.length / CUSTOMS_PER_PAGE));
   page = Math.max(1, Math.min(page, totalPages));
   const pagedData = filtered.slice(
     (page - 1) * CUSTOMS_PER_PAGE,
     page * CUSTOMS_PER_PAGE
   );
-
-  // Tampilan empty state yang lebih bagus dan user friendly
   if (filtered.length === 0) {
     container.innerHTML = `
     <div class="custom-list-empty-tailwind flex flex-col items-center justify-center gap-2 px-6 py-10 rounded-xl bg-white shadow-lg text-center border border-[#e5e1fa]">
@@ -139,36 +135,39 @@ function renderGabunganPaketList(filterCategory = "all", page = 1) {
   pagedData.forEach((cust) => {
     const div = document.createElement("div");
     div.className =
-      "custom-list-card bg-white rounded-xl shadow p-6 flex flex-col border-2 border-transparent mb-4";
+      "custom-list-card flex flex-col items-start bg-white rounded-2xl shadow-lg border border-[#e5e1fa] p-6 mb-4";
     div.innerHTML = `
-      <div class="custom-list-title text-[#8e6fff] font-bold mb-2">${
-        cust.name
-      }</div>
-      <div class="custom-list-services mb-1 text-gray-700">Gabungan: ${cust.services
-        .map((id) => servicesData.find((s) => s.id === id)?.title || "")
-        .join(" + ")}</div>
-      <div class="custom-list-price mb-1 font-semibold text-[#3d347d]">Harga: Rp${cust.price.toLocaleString()} (${
-      cust.duration
-    } bulan)</div>
-      <div class="custom-list-notes mb-1 text-[#514a7f]">${
-        cust.notes ? "Catatan: " + cust.notes : ""
-      }</div>
-      <div class="custom-list-actions flex gap-2 mt-2">
-        <button data-id="${
-          cust.id
-        }" class="custom-list-edit bg-[#8e6fff] text-white rounded px-4 py-1 font-semibold hover:bg-[#6e4fff] transition">Edit</button>
-        <button data-id="${
-          cust.id
-        }" class="custom-list-delete bg-[#e04965] text-white rounded px-4 py-1 font-semibold hover:bg-[#c0344e] transition">Hapus</button>
-      </div>
-    `;
+  <div class="custom-list-title">${cust.name}</div>
+  <div class="custom-list-services">
+    Gabungan: ${cust.services
+      .map((id) => servicesData.find((s) => s.id === id)?.title || "")
+      .join(" + ")}
+  </div>
+  <div class="custom-list-price">
+    <b>Harga: Rp${cust.price.toLocaleString()} (${cust.duration} bulan)</b>
+  </div>
+  <div class="custom-list-notes">
+    ${cust.notes ? "Catatan: " + cust.notes : ""}
+  </div>
+  <div class="custom-list-actions flex flex-wrap md:flex-nowrap gap-2 md:gap-3 w-full mt-3 items-center">
+    <button 
+      data-id="${cust.id}" 
+      class="custom-list-edit h-11 flex items-center justify-center font-bold rounded-lg px-6 min-w-[100px] text-white text-[1rem] bg-[#8e6fff] hover:bg-[#6e4fff] transition"
+    >Edit</button>
+    <button 
+      data-id="${cust.id}" 
+      class="custom-list-delete h-11 flex items-center justify-center font-bold rounded-lg px-6 min-w-[100px] text-white text-[1rem] bg-[#e04965] hover:bg-[#c0344e] transition"
+    >Hapus</button>
+    <button 
+      data-id="${cust.id}" 
+      data-type="custom" 
+      class="btn-purchase h-11 flex items-center justify-center font-bold rounded-lg px-6 min-w-[100px] text-white text-[1rem] bg-[#49e097] hover:bg-[#37c77f] transition"
+    >Beli Paket Ini</button>
+  </div>
+`;
     container.appendChild(div);
   });
-
-  // Pagination UI
   renderCustomPagination(totalPages, page, filterCategory);
-
-  // Edit/Hapus event
   container.querySelectorAll(".custom-list-edit").forEach((btn) => {
     btn.onclick = function () {
       const id = btn.getAttribute("data-id");
@@ -185,8 +184,6 @@ function renderGabunganPaketList(filterCategory = "all", page = 1) {
       }
     };
   });
-
-  // MODAL KONFIRMASI HAPUS
   let pendingDeleteId = null;
   let pendingDeleteCallback = null;
   container.querySelectorAll(".custom-list-delete").forEach((btn) => {
@@ -218,16 +215,12 @@ function renderGabunganPaketList(filterCategory = "all", page = 1) {
         document.getElementById("custom-result").textContent =
           "Kustomisasi berhasil dihapus";
         document.getElementById("custom-result").style.color = "#3d347d";
-        // Reset
         pendingDeleteId = null;
         pendingDeleteCallback = null;
       };
-      // Show modal
       document.getElementById("confirm-modal").classList.remove("hidden");
     };
   });
-
-  // Modal event (hanya perlu aktifkan satu kali, jangan double)
   const confirmCancelBtn = document.getElementById("confirm-cancel");
   const confirmDeleteBtn = document.getElementById("confirm-delete");
   if (confirmCancelBtn && confirmDeleteBtn) {
@@ -241,6 +234,27 @@ function renderGabunganPaketList(filterCategory = "all", page = 1) {
       if (pendingDeleteCallback) pendingDeleteCallback();
     };
   }
+  container.querySelectorAll(".btn-purchase").forEach((btn) => {
+    btn.onclick = function () {
+      const id = btn.getAttribute("data-id");
+      const allData = loadCustomizations();
+      const cust = allData.find((c) => c.id === id);
+      if (cust) {
+        showPurchaseModal({
+          type: "custom",
+          title: cust.name,
+          desc:
+            "Gabungan: " +
+            cust.services
+              .map((sid) => servicesData.find((s) => s.id === sid)?.title || "")
+              .join(" + ") +
+            (cust.notes ? "<br>Catatan: " + cust.notes : ""),
+          price:
+            "Rp" + cust.price.toLocaleString() + ` (${cust.duration} bulan)`,
+        });
+      }
+    };
+  });
 }
 
 function renderCustomPagination(totalPages, currentPage, filterCategory) {
@@ -274,7 +288,6 @@ function formatCategory(cat) {
   }
 }
 
-// Katalog layanan + filter
 function renderServiceCatalog(category = "all") {
   const grid = document.getElementById("service-catalog");
   let filtered =
@@ -285,26 +298,39 @@ function renderServiceCatalog(category = "all") {
   filtered.forEach((service) => {
     const card = document.createElement("div");
     card.className =
-      "service-card bg-white rounded-xl shadow-lg p-7 flex flex-col hover:shadow-2xl transition border border-transparent hover:border-[#b1a3ff]";
+      "service-card flex flex-col justify-between items-stretch bg-white rounded-2xl shadow-lg border border-[#e5e1fa] p-7";
     card.innerHTML = `
-      <div class="service-category text-[#b1a3ff] mb-1">${formatCategory(
-        service.category
-      )}</div>
-      <div class="service-title text-xl font-bold text-[#8e6fff] mb-2">${
-        service.title
-      }</div>
-      <div class="service-desc mb-2 text-gray-700">${service.desc}</div>
-      <div class="service-price mb-2 text-[#3d347d] font-semibold">Rp${service.price.toLocaleString()}</div>
-      <ul class="mb-2 text-sm list-disc pl-6">${service.features
-        .map((f) => `<li>${f}</li>`)
-        .join("")}</ul>
-      <div class="text-gray-500 text-sm">Durasi: ${service.duration}</div>
+      <div>
+        <div class="service-category">${formatCategory(service.category)}</div>
+        <div class="service-title">${service.title}</div>
+        <div class="service-desc">${service.desc}</div>
+        <div class="service-price">Rp${service.price.toLocaleString()}</div>
+        <ul>${service.features.map((f) => `<li>${f}</li>`).join("")}</ul>
+        <div class="text-gray-500">Durasi: ${service.duration}</div>
+      </div>
+      <button class="btn-purchase" data-id="${
+        service.id
+      }" data-type="single">Beli Layanan</button>
     `;
     grid.appendChild(card);
   });
+  grid.querySelectorAll(".btn-purchase").forEach((btn) => {
+    btn.onclick = function () {
+      const id = btn.getAttribute("data-id");
+      const service = servicesData.find((s) => s.id === id);
+      if (service) {
+        showPurchaseModal({
+          type: "single",
+          title: service.title,
+          desc: service.desc,
+          price:
+            "Rp" + service.price.toLocaleString() + ` (${service.duration})`,
+        });
+      }
+    };
+  });
 }
 
-// Combo service checklist (untuk kalkulator & custom)
 function renderComboServices(containerId, checkedIds = []) {
   const container = document.getElementById(containerId);
   container.innerHTML = "";
@@ -333,7 +359,6 @@ function getSelectedExtras(selectId) {
   );
 }
 
-// Kalkulator gabungan
 function setupCalculator() {
   renderComboServices("calc-combo-services");
   document.getElementById("calc-btn").addEventListener("click", function () {
@@ -359,7 +384,6 @@ function setupCalculator() {
   });
 }
 
-// Tabel perbandingan layanan/paket
 function renderCompareTable() {
   const tbody = document.getElementById("compare-table-body");
   tbody.innerHTML = "";
@@ -370,13 +394,34 @@ function renderCompareTable() {
       <td>Rp${s.price.toLocaleString()}</td>
       <td>${s.features.join(", ")}</td>
       <td>${s.duration}</td>
-      <td><span class="badge">Bisa digabung</span></td>
+      <td>
+        <span class="badge">Bisa digabung</span>
+      </td>
+      <td class="text-center">
+        <button class="btn-purchase" data-id="${
+          s.id
+        }" data-type="single">Beli</button>
+      </td>
     `;
     tbody.appendChild(tr);
   });
+  tbody.querySelectorAll(".btn-purchase").forEach((btn) => {
+    btn.onclick = function () {
+      const id = btn.getAttribute("data-id");
+      const service = servicesData.find((s) => s.id === id);
+      if (service) {
+        showPurchaseModal({
+          type: "single",
+          title: service.title,
+          desc: service.desc,
+          price:
+            "Rp" + service.price.toLocaleString() + ` (${service.duration})`,
+        });
+      }
+    };
+  });
 }
 
-// Customisasi CRUD
 function loadCustomizations() {
   return JSON.parse(localStorage.getItem("customPackages") || "[]");
 }
@@ -461,16 +506,12 @@ function estimateCustomPrice(services, duration, features) {
   features.forEach((e) => (total += extraPrice[e] || 0));
   return total;
 }
-
-// Scroll ke custom form
 function scrollToCustomForm() {
   const section = document.getElementById("custom-section");
   if (section) {
     section.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 }
-
-// Custom Form submit
 function setupCustomForm() {
   const cache = loadEditCache();
   if (cache && cache.id) renderCustomForm(cache);
@@ -525,7 +566,7 @@ function setupCustomForm() {
         document.getElementById("custom-form").dataset.editId = "";
         clearEditCache();
         saveCustomizations(data);
-        renderGabunganPaketList(filterCategory, currentPage); // stay di page saat edit
+        renderGabunganPaketList(filterCategory, currentPage);
       } else {
         const id = "cust" + Date.now();
         data.push({ id, services, duration, features, name, notes, price });
@@ -534,18 +575,50 @@ function setupCustomForm() {
           "Kustomisasi berhasil ditambahkan!";
         document.getElementById("custom-result").style.color = "#3d347d";
         saveCustomizations(data);
-        renderGabunganPaketList(filterCategory, totalPages); // add baru, ke page terakhir
+        renderGabunganPaketList(filterCategory, totalPages);
       }
       renderCustomForm();
       scrollToCustomForm();
     });
 
-  // Filter select kategori
   document
     .getElementById("custom-filter-category")
     .addEventListener("change", function () {
       renderGabunganPaketList(this.value, 1);
     });
+}
+
+// Modal Pembelian
+function showPurchaseModal({ type, title, desc, price }) {
+  const modal = document.getElementById("purchase-modal");
+  modal.classList.remove("hidden");
+  document.getElementById("purchase-title").innerHTML = title;
+  document.getElementById("purchase-desc").innerHTML = desc;
+  document.getElementById("purchase-price").innerHTML = price;
+  document.getElementById("purchase-success").classList.add("hidden");
+  const btnConfirm = document.getElementById("purchase-confirm");
+  btnConfirm.disabled = false;
+  btnConfirm.textContent = "Konfirmasi Pembelian";
+  btnConfirm.onclick = function () {
+    btnConfirm.disabled = true;
+    btnConfirm.textContent = "Memproses...";
+    setTimeout(() => {
+      btnConfirm.textContent = "Konfirmasi Pembelian";
+      btnConfirm.disabled = false;
+      document.getElementById("purchase-success").textContent =
+        "Pembelian berhasil! Tim kami akan segera menghubungi Anda untuk proses selanjutnya.";
+      document.getElementById("purchase-success").classList.remove("hidden");
+      showSnackbar("Pembelian berhasil!", "success");
+      setTimeout(() => {
+        modal.classList.add("hidden");
+        document.getElementById("purchase-success").classList.add("hidden");
+      }, 2200);
+    }, 1400);
+  };
+  document.getElementById("purchase-cancel").onclick = function () {
+    modal.classList.add("hidden");
+    document.getElementById("purchase-success").classList.add("hidden");
+  };
 }
 
 // Init

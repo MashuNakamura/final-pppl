@@ -257,11 +257,14 @@
                 >
                   Kustomisasi
                 </th>
+                <th
+                  class="bg-[#f3f0ff] text-[#8e6fff] font-semibold py-3 px-4 text-sm uppercase tracking-wide border-b border-[#e5e1fa] text-center"
+                >
+                  Pembelian
+                </th>
               </tr>
             </thead>
-            <tbody id="compare-table-body">
-              <!-- JS -->
-            </tbody>
+            <tbody id="compare-table-body"></tbody>
           </table>
         </div>
       </section>
@@ -366,7 +369,6 @@
             <option value="web">Website & Development</option>
           </select>
         </div>
-        <!-- Card list gabungan kustomisasi (pagination tetap) -->
         <div
           id="gabungan-paket-list"
           class="my-6 p-3 w-full max-w-6xl mx-auto"
@@ -472,6 +474,53 @@
             Hapus
           </button>
         </div>
+      </div>
+    </div>
+
+    <!-- Modal Pembelian Service -->
+    <div
+      id="purchase-modal"
+      class="fixed inset-0 z-[9998] flex items-center justify-center bg-black/30 backdrop-blur-sm hidden"
+    >
+      <div
+        class="bg-white rounded-xl shadow-2xl max-w-sm w-full p-7 border border-[#e5e1fa] flex flex-col items-center text-center animate-fadein"
+      >
+        <svg
+          width="48"
+          height="48"
+          fill="#8e6fff"
+          class="mb-4"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M21 7.5V6c0-1.1-.9-2-2-2H5C3.9 4 3 4.9 3 6v1.5m18 0h-18M21 7.5l-1.6 11.24c-.14 1-1.01 1.76-2.03 1.76H6.63c-1.02 0-1.89-.76-2.03-1.76L3 7.5m0 0h18"
+            stroke="#8e6fff"
+            stroke-width="1.5"
+            fill="none"
+          />
+        </svg>
+        <div
+          class="font-bold text-[#8e6fff] text-lg mb-2"
+          id="purchase-title"
+        ></div>
+        <div class="text-[#3d347d] mb-4 font-medium" id="purchase-desc"></div>
+        <div class="font-bold text-[#3d347d] mb-2" id="purchase-price"></div>
+        <button
+          id="purchase-confirm"
+          class="px-6 py-2 rounded-lg font-semibold bg-[#8e6fff] text-white hover:bg-[#6e4fff] transition mb-2 w-full"
+        >
+          Konfirmasi Pembelian
+        </button>
+        <button
+          id="purchase-cancel"
+          class="px-6 py-2 rounded-lg font-semibold bg-[#f3f0ff] text-[#8e6fff] hover:bg-[#ececff] transition w-full"
+        >
+          Batal
+        </button>
+        <div
+          id="purchase-success"
+          class="hidden text-green-600 mt-4 font-semibold"
+        ></div>
       </div>
     </div>
   </body>
