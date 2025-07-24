@@ -48,15 +48,16 @@
             class="hover:text-[#8e6fff] font-medium transition"
             >Portfolio</a
           >
-          <a
-            href="blog.html"
-            class="text-[#8e6fff] font-bold underline underline-offset-4 transition"
-            >Blog</a
-          >
+
           <a
             href="contact.html"
             class="hover:text-[#8e6fff] font-medium transition"
             >Contact</a
+          >
+          <a
+            href="blog.html"
+            class="text-[#8e6fff] font-bold underline underline-offset-4 transition"
+            >Blog</a
           >
         </div>
         <button
@@ -110,14 +111,14 @@
             >Portfolio</a
           >
           <a
-            href="blog.html"
-            class="block py-2 px-6 rounded bg-[#f3f0ff] font-bold text-[#8e6fff] transition"
-            >Blog</a
-          >
-          <a
             href="contact.html"
             class="block py-2 px-6 rounded hover:bg-[#f3f0ff] font-medium transition"
             >Contact</a
+          >
+          <a
+            href="blog.html"
+            class="block py-2 px-6 rounded bg-[#f3f0ff] font-bold text-[#8e6fff] transition"
+            >Blog</a
           >
         </div>
       </div>
@@ -159,6 +160,57 @@
         <div id="blog-pagination" class="flex justify-center gap-2 mt-10"></div>
       </section>
     </main>
+
+    <!-- Detail Article Modal -->
+    <div
+      id="detail-modal"
+      class="fixed inset-0 z-[80] bg-black/40 flex justify-center items-center hidden"
+    >
+      <div class="detail-modal-card" tabindex="0">
+        <button id="close-detail-modal">&times;</button>
+        <div id="detail-modal-inner">
+          <div id="detail-modal-content"></div>
+        </div>
+        <div class="detail-modal-actions"></div>
+      </div>
+    </div>
+    <!-- Share Modal -->
+    <div
+      id="share-modal"
+      class="fixed inset-0 z-[90] bg-black/40 flex justify-center items-center hidden"
+    >
+      <div
+        class="bg-white rounded-2xl shadow-xl max-w-sm w-full p-7 text-center relative"
+      >
+        <button
+          id="close-share-modal"
+          class="absolute top-4 right-4 text-[#8e6fff] hover:text-[#e04965] text-xl font-bold focus:outline-none"
+        >
+          &times;
+        </button>
+        <div class="mb-4 text-[#8e6fff] text-lg font-bold">
+          Konfirmasi Bagikan Artikel
+        </div>
+        <div id="share-modal-title" class="mb-5 font-semibold"></div>
+        <div class="mb-3">Bagikan ke media sosial?</div>
+        <div class="flex gap-3 justify-center mb-5">
+          <button
+            class="px-4 py-2 rounded-lg bg-[#e04965] text-white font-bold hover:bg-[#c0344e]"
+            id="share-cancel"
+          >
+            Batal
+          </button>
+          <button
+            class="px-4 py-2 rounded-lg bg-[#49e097] text-white font-bold hover:bg-[#37c77f]"
+            id="share-confirm"
+          >
+            Bagikan
+          </button>
+        </div>
+        <div id="share-modal-result" class="text-green-600 font-semibold"></div>
+      </div>
+    </div>
+
     <!-- Footer Start -->
     <footer
       class="bg-white border-t border-[#ececff] mt-12"
