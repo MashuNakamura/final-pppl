@@ -5,20 +5,18 @@ Dikembangkan sebagai tugas akhir PPPL, menampilkan fitur interaktif, animasi, da
 
 ---
 
-## 🚀 **Daftar Isi**
+## Daftar Isi
 
 - [Deskripsi Proyek](#deskripsi-proyek)
 - [Fitur Utama](#fitur-utama)
 - [Struktur Halaman](#struktur-halaman)
 - [Struktur Folder & File](#struktur-folder--file)
 - [Cara Menjalankan](#cara-menjalankan)
-- [Design Pattern & Prinsip Software](#design-pattern--prinsip-software)
 - [Preview & Demo](#preview--demo)
-- [Author & Kontak](#author--kontak)
 
 ---
 
-## 📋 **Deskripsi Proyek**
+## Deskripsi Proyek
 
 Website agency pemasaran digital dengan tujuan:
 
@@ -28,7 +26,7 @@ Website agency pemasaran digital dengan tujuan:
 
 ---
 
-## 🏆 **Fitur Utama**
+## Fitur Utama
 
 - **Homepage:** Hero animated parallax, typing effect, statistic counter, CTA smooth scroll.
 - **Features/Services:** Card hover, animated icons, progressive disclosure, detail layanan.
@@ -41,7 +39,7 @@ Website agency pemasaran digital dengan tujuan:
 
 ---
 
-## 🗂️ **Struktur Halaman**
+## Struktur Halaman
 
 - `/html/index.html` - Homepage
 - `/html/about.html` - Tentang Perusahaan
@@ -52,7 +50,7 @@ Website agency pemasaran digital dengan tujuan:
 
 ---
 
-## 🗃️ **Struktur Folder & File**
+## Struktur Folder & File
 
 ```
 final-pppl/
@@ -86,7 +84,7 @@ final-pppl/
 
 ---
 
-## 👨‍💻 **Cara Menjalankan**
+## Cara Menjalankan
 
 1. Clone/download repo ini.
 2. Buka `/html/index.html` di browser.
@@ -95,7 +93,7 @@ final-pppl/
 
 ---
 
-## 📸 Preview & Demo
+## Preview & Demo
 
 Berikut beberapa tampilan halaman website:
 
