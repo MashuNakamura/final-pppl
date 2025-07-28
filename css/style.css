@@ -239,3 +239,44 @@ body {
   opacity: 1;
   pointer-events: auto;
 }
+.parallax-bg {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100%;
+  z-index: 1;
+  overflow: visible;
+}
+.parallax-ellipse {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.35;
+  filter: blur(10px);
+  will-change: transform;
+  transition: transform 0.13s cubic-bezier(0.4, 1, 0.6, 1);
+}
+.ellipse-1 {
+  width: 140px;
+  height: 140px;
+  left: 10vw;
+  top: 220px;
+  background: radial-gradient(circle at 55% 45%, #8e6fff 70%, #fff0 100%);
+  z-index: 1;
+}
+.ellipse-2 {
+  width: 100px;
+  height: 100px;
+  right: 13vw;
+  top: 320px;
+  background: radial-gradient(circle at 60% 50%, #ffb5c3 70%, #fff0 100%);
+  z-index: 2;
+}
+.ellipse-3 {
+  width: 60px;
+  height: 60px;
+  left: 42vw;
+  top: 400px;
+  background: radial-gradient(circle at 40% 70%, #ffe484 80%, #fff0 100%);
+  z-index: 3;
+}

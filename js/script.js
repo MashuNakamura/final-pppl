@@ -80,42 +80,23 @@
     requestAnimationFrame(step);
   }
 
-  // Parallax animasi untuk elemen shape di hero
-  function setupParallaxShapes() {
-    const shapes = document.querySelectorAll(".hero-shape");
-    let lastScrollY = 0,
-      ticking = false;
-    function updateParallax() {
-      shapes.forEach((shape, idx) => {
-        const scrollY = lastScrollY;
-        const speed = (idx + 1) * 0.17 + 0.09;
-        let floatY = parseFloat(
-          getComputedStyle(shape).getPropertyValue("--floatY") || 0
-        );
-        shape.style.transform = `translateY(${scrollY * speed + floatY}px)`;
-      });
-      ticking = false;
-    }
+  // Parallax ellipse ngikut scroll
+  function setupParallaxEllipses() {
+    const ellipses = [
+      { el: document.querySelector(".ellipse-1"), parallax: 0.7 },
+      { el: document.querySelector(".ellipse-2"), parallax: 0.7 },
+      { el: document.querySelector(".ellipse-3"), parallax: 0.7 },
+    ];
     window.addEventListener("scroll", () => {
-      lastScrollY = window.scrollY;
-      if (!ticking) {
-        window.requestAnimationFrame(updateParallax);
-        ticking = true;
-      }
-    });
-    function animateShapes() {
-      const now = Date.now();
-      shapes.forEach((shape, idx) => {
-        const phase = idx * 1000;
-        const amplitude = 18 + idx * 6;
-        const period = 4200 + idx * 900;
-        const floatY =
-          Math.sin(((now + phase) / period) * Math.PI * 2) * amplitude;
-        shape.style.setProperty("--floatY", floatY);
+      const scrollY = window.scrollY;
+      ellipses.forEach(({ el, parallax }) => {
+        if (el) {
+          el.style.transform = `translateY(${scrollY * parallax}px)`;
+        }
       });
-      requestAnimationFrame(animateShapes);
-    }
-    animateShapes();
+    });
+    // Inisialisasi posisi awal supaya langsung terlihat benar
+    window.dispatchEvent(new Event("scroll"));
   }
 
   // Scroll halus untuk anchor & tombol CTA
@@ -273,7 +254,7 @@
     animateCounter("users-count", 0, 1688, 1400, "+");
     animateCounter("projects-count", 0, 340, 1200, "+");
     animateCounter("success-count", 0, 98, 1300, "%");
-    setupParallaxShapes();
+    setupParallaxEllipses();
     setupSmoothScroll();
     setupServiceDisclosure();
     setupTestimonialSection();

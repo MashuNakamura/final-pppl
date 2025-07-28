@@ -140,16 +140,17 @@
       <!-- HERO SECTION -->
       <section
         id="hero"
-        class="relative min-h-screen flex flex-col justify-center items-center overflow-hidden"
+        class="relative min-h-[140vh] flex flex-col justify-center items-center overflow-x-hidden overflow-y-visible"
+        style="background: linear-gradient(180deg, #f8f7ff 60%, #e6e3fa 100%)"
       >
-        <!-- Animated Shapes -->
-        <div class="absolute inset-0 z-0 pointer-events-none">
-          <div class="hero-shape hero-shape1"></div>
-          <div class="hero-shape hero-shape2"></div>
-          <div class="hero-shape hero-shape3"></div>
+        <!-- PARALLAX SHAPES -->
+        <div class="parallax-bg">
+          <div class="parallax-ellipse ellipse-1"></div>
+          <div class="parallax-ellipse ellipse-2"></div>
+          <div class="parallax-ellipse ellipse-3"></div>
         </div>
         <div
-          class="relative z-10 text-center max-w-2xl mx-auto px-4 pt-20 pb-10"
+          class="relative z-10 text-center max-w-2xl mx-auto px-4 pt-32 pb-10"
         >
           <h1 class="text-4xl md:text-5xl font-bold mb-2 text-center">
             Strategi Digital yang
@@ -165,7 +166,6 @@
           <a href="#services" class="cta-btn smooth-scroll"
             >Lihat Layanan Kami</a
           >
-          <!-- Down Arrow -->
           <a
             href="#services"
             class="down-arrow smooth-scroll flex flex-col items-center mt-10"
