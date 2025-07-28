@@ -21,16 +21,32 @@ function setupHamburgerMenu() {
 }
 
 // Timeline animasi (semua item langsung muncul dengan animasi berurutan)
-function revealAllTimeline() {
-  const items = document.querySelectorAll(".timeline-item");
-  items.forEach((item, i) => {
-    setTimeout(() => {
-      item.classList.add("visible");
-    }, 150 * i);
-  });
-}
+// function revealAllTimeline() {
+//   const items = document.querySelectorAll(".timeline-item");
+//   items.forEach((item, i) => {
+//     setTimeout(() => {
+//       item.classList.add("visible");
+//     }, 150 * i);
+//   });
+// }
 
-// Counter animasi untuk statistik (6 statistik: 3 index + 3 tambahan)
+// Timeline animasi saat scroll: 3 item sekaligus muncul saat masuk viewport
+function animateTimelineOnScroll() {
+  const items = document.querySelectorAll(".timeline-item:not(.visible)");
+  if (items.length === 0) return;
+
+  // Kalau item pertama sudah masuk viewport, langsung munculkan 3 sekaligus (atau sisa yang ada)
+  const rect = items[0].getBoundingClientRect();
+  if (rect.top < window.innerHeight - 80) {
+    for (let i = 0; i < 3 && i < items.length; i++) {
+      items[i].classList.add("visible");
+    }
+  }
+}
+document.addEventListener("scroll", animateTimelineOnScroll);
+document.addEventListener("DOMContentLoaded", animateTimelineOnScroll);
+
+// Counter animasi untuk statistik
 function animateCounter(id, to, duration = 1200, postfix = "") {
   const el = document.getElementById(id);
   if (!el) return;
@@ -57,11 +73,9 @@ function checkStatsInView() {
   const rect = stats.getBoundingClientRect();
   if (!statsAnimated && rect.top < window.innerHeight - 80) {
     statsAnimated = true;
-    // 3 dari index.html (angka contoh, bisa disesuaikan)
     animateCounter("stat-users", 1688, 1100, "+"); // Pengguna
     animateCounter("stat-projects", 340, 1200, "+"); // Proyek Selesai
     animateCounter("stat-success", 98, 1300, "%"); // Tingkat Keberhasilan
-    // 3 tambahan baru (dummy angka, bisa custom)
     animateCounter("stat-client", 400, 1100, "+"); // Klien
     animateCounter("stat-growth", 180, 1400, "%"); // Pertumbuhan (%)
     animateCounter("stat-award", 7, 1300, ""); // Penghargaan
@@ -71,7 +85,8 @@ function checkStatsInView() {
 // Init
 document.addEventListener("DOMContentLoaded", function () {
   setupHamburgerMenu();
-  revealAllTimeline();
+  // revealAllTimeline();
+  animateTimelineOnScroll();
   document.addEventListener("scroll", checkStatsInView);
   checkStatsInView();
 });
